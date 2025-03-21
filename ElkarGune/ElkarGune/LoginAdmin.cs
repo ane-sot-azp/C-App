@@ -10,26 +10,21 @@ using System.Windows.Forms;
 
 namespace ElkarGune
 {
-    public partial class Admin: Form
+    public partial class LoginAdmin: Form
     {
-        public Admin()
+        public LoginAdmin()
         {
             InitializeComponent();
         }
 
         private void btn_Admin_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Administratzaile moduan sartzeko beste programan sartu beharko zara.");
-            this.Close();
-            Login login = new Login();
-            login.Show();
+            MessageBox.Show("Administratzailea");
         }
 
         private void btn_Bazkidea_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Menu menu = new Menu();
-            menu.Show();
+            MessageBox.Show("Bazkidea");
         }
     }
 }

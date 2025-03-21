@@ -23,6 +23,7 @@ namespace ElkarGune
         {
             login();
         }
+
         public void login()
         {
             DBKonexioa db = new DBKonexioa();
@@ -57,26 +58,30 @@ namespace ElkarGune
 
                     if (dr2.Read())
                     {
+                        this.Hide();
                         Admin admin = new Admin();
                         admin.Show();
                     }
                     else
                     {
                         MessageBox.Show("Ongi etorri " + erabiltzailea);
-                    this.Hide();
+                        this.Hide();
+                        Menu menu = new Menu();
+                        menu.Show();
                     }
 
                 }
                 else
                 {
                     MessageBox.Show("Erabiltzailea edo pasahitza ez da zuzena");
+                    txt_Pasahitza.Text = "";
                 }
-                
+
 
             }
             catch (Exception ex)
             {
-                
+
                 MessageBox.Show("Errorea: " + ex.Message);
             }
             finally
@@ -85,7 +90,7 @@ namespace ElkarGune
             }
         }
 
-        
+
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -97,6 +102,16 @@ namespace ElkarGune
             if (erantzuna == DialogResult.Yes)
             {
                 Application.Exit(); // Cierra la aplicación si el usuario elige "Bai" (Sí)
+            }
+        }
+
+        private void txt_Pasahitza_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Llama al método cuando el usuario presiona Enter
+                login();
+                e.SuppressKeyPress = true; // Evita que se haga el sonido de "beep"
             }
         }
     }

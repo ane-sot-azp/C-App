@@ -73,9 +73,39 @@ namespace ElkarGune.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FONDO {
+            get {
+                object obj = ResourceManager.GetObject("FONDO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FONDO_LOGIN {
             get {
                 object obj = ResourceManager.GetObject("FONDO_LOGIN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KONTSUMOA {
+            get {
+                object obj = ResourceManager.GetObject("KONTSUMOA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MENUA {
+            get {
+                object obj = ResourceManager.GetObject("MENUA", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
