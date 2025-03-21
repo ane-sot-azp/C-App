@@ -12,9 +12,10 @@ namespace ElkarGune
 {
     public partial class Admin: Form
     {
-        public Admin()
+        public Admin(String erabiltzailea)
         {
             InitializeComponent();
+            label2.Text = "Kaixo " + erabiltzailea + "!";
         }
 
         private void btn_Admin_Click(object sender, EventArgs e)
@@ -30,6 +31,11 @@ namespace ElkarGune
             this.Hide();
             Menu menu = new Menu();
             menu.Show();
+        }
+
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

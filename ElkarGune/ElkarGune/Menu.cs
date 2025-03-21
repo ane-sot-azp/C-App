@@ -22,11 +22,6 @@ namespace ElkarGune
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            Froga froga = new Froga();
-            froga.Show();
-        }
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -55,6 +50,12 @@ namespace ElkarGune
                 login.Show();
             }
             
+        }
+
+        private void lbl_Kontsumizioak_Click(object sender, EventArgs e)
+        {
+            Kontsumizioak kontsumizioak = new Kontsumizioak();
+            kontsumizioak.Show();
         }
     }
 }

@@ -87,4 +87,5 @@ C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarG
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.csproj.Up2Date
-C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Froga.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Kontsumizioak.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.KontsumizioElementuak.resources

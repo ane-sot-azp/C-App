@@ -30,7 +30,7 @@ namespace ElkarGune
             db.konektatu();
             string erabiltzailea = txt_Erabiltzailea.Text;
             string pasahitza = txt_Pasahitza.Text;
-            MessageBox.Show(erabiltzailea + " " + pasahitza);
+            //MessageBox.Show(erabiltzailea + " " + pasahitza);
 
             if (string.IsNullOrEmpty(erabiltzailea) || string.IsNullOrEmpty(pasahitza))
             {
@@ -59,7 +59,7 @@ namespace ElkarGune
                     if (dr2.Read())
                     {
                         this.Hide();
-                        Admin admin = new Admin();
+                        Admin admin = new Admin(erabiltzailea);
                         admin.Show();
                     }
                     else
@@ -113,6 +113,11 @@ namespace ElkarGune
                 login();
                 e.SuppressKeyPress = true; // Evita que se haga el sonido de "beep"
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

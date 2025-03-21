@@ -105,11 +105,17 @@
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
     <Compile Include="DBKonexioa.cs" />
-    <Compile Include="Froga.cs">
+    <Compile Include="Kontsumizioak.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Froga.Designer.cs">
-      <DependentUpon>Froga.cs</DependentUpon>
+    <Compile Include="Kontsumizioak.Designer.cs">
+      <DependentUpon>Kontsumizioak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KontsumizioElementuak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KontsumizioElementuak.Designer.cs">
+      <DependentUpon>KontsumizioElementuak.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -128,8 +134,11 @@
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Froga.resx">
-      <DependentUpon>Froga.cs</DependentUpon>
+    <EmbeddedResource Include="Kontsumizioak.resx">
+      <DependentUpon>Kontsumizioak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KontsumizioElementuak.resx">
+      <DependentUpon>KontsumizioElementuak.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -175,6 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MENUA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KOPURUAK.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

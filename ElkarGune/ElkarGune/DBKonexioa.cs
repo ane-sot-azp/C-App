@@ -33,7 +33,7 @@ namespace ElkarGune
             try
             {
                 conn.Open();
-                MessageBox.Show("Ongi konektatu da " + BaseDeDatos + " datu basera.");
+                //MessageBox.Show("Ongi konektatu da " + BaseDeDatos + " datu basera.");
             }
             catch (Exception ex)
             {
