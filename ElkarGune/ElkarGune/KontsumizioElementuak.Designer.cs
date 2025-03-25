@@ -30,7 +30,9 @@
         {
             this.lbl_ProdMota = new System.Windows.Forms.Label();
             this.taula1 = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.taula1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_ProdMota
@@ -45,9 +47,18 @@
             this.taula1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.taula1.Location = new System.Drawing.Point(172, 62);
             this.taula1.Name = "taula1";
+            this.taula1.RowHeadersWidth = 51;
             this.taula1.RowTemplate.Height = 24;
             this.taula1.Size = new System.Drawing.Size(872, 565);
             this.taula1.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(12, 54);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(94, 89);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // KontsumizioElementuak
             // 
@@ -56,6 +67,7 @@
             this.BackgroundImage = global::ElkarGune.Properties.Resources.KOPURUAK;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1522, 696);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.taula1);
             this.Controls.Add(this.lbl_ProdMota);
             this.DoubleBuffered = true;
@@ -63,6 +75,7 @@
             this.Text = "KontsumizioElementuak";
             this.Load += new System.EventHandler(this.KontsumizioElementuak_Load);
             ((System.ComponentModel.ISupportInitialize)(this.taula1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -71,5 +84,6 @@
 
         private System.Windows.Forms.Label lbl_ProdMota;
         private System.Windows.Forms.DataGridView taula1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

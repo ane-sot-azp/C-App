@@ -56,6 +56,7 @@ namespace ElkarGune
         {
             Kontsumizioak kontsumizioak = new Kontsumizioak();
             kontsumizioak.Show();
+            this.Close();
         }
     }
 }
