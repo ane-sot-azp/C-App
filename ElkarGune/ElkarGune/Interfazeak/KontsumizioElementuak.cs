@@ -13,13 +13,15 @@ namespace ElkarGune
 {
     public partial class KontsumizioElementuak : Form
     {
+        private int idBazk;
         public KontsumizioElementuak()
         {
             InitializeComponent();
 
         }
-        public KontsumizioElementuak(int idProduktuMota)
+        public KontsumizioElementuak(int idProduktuMota, int idBazkidea)
         {
+            idBazk = idBazkidea;
             InitializeComponent();
             for (int i = 1; i <= 12; i++)
             {
@@ -91,9 +93,11 @@ namespace ElkarGune
             if (sender is PictureBox pictureBox && pictureBox.Tag != null)
             {
                 int idProduktua = (int)pictureBox.Tag;
-                Kopurua kopurua = new Kopurua(idProduktua);
+                Kopurua kopurua = new Kopurua(idProduktua, idBazk);
                 kopurua.Show();                
             }
         }
+
+
     }
 }

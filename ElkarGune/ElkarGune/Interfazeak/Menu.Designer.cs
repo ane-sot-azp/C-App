@@ -32,6 +32,8 @@
             this.lbl_SaioaItxiMenu = new System.Windows.Forms.Label();
             this.lbl_Erreserbak = new System.Windows.Forms.Label();
             this.lbl_Kontsumizioak = new System.Windows.Forms.Label();
+            this.lbl_erab = new System.Windows.Forms.Label();
+            this.lbl_idBaz = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_ItxiMenu
@@ -75,6 +77,20 @@
             this.lbl_Kontsumizioak.TabIndex = 9;
             this.lbl_Kontsumizioak.Click += new System.EventHandler(this.lbl_Kontsumizioak_Click);
             // 
+            // lbl_erab
+            // 
+            this.lbl_erab.Location = new System.Drawing.Point(36, 86);
+            this.lbl_erab.Name = "lbl_erab";
+            this.lbl_erab.Size = new System.Drawing.Size(100, 23);
+            this.lbl_erab.TabIndex = 10;
+            // 
+            // lbl_idBaz
+            // 
+            this.lbl_idBaz.Location = new System.Drawing.Point(36, 140);
+            this.lbl_idBaz.Name = "lbl_idBaz";
+            this.lbl_idBaz.Size = new System.Drawing.Size(100, 23);
+            this.lbl_idBaz.TabIndex = 11;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -82,6 +98,8 @@
             this.BackgroundImage = global::ElkarGune.Properties.Resources.MENUA;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1522, 696);
+            this.Controls.Add(this.lbl_idBaz);
+            this.Controls.Add(this.lbl_erab);
             this.Controls.Add(this.lbl_Kontsumizioak);
             this.Controls.Add(this.lbl_Erreserbak);
             this.Controls.Add(this.lbl_SaioaItxiMenu);
@@ -100,5 +118,7 @@
         private System.Windows.Forms.Label lbl_SaioaItxiMenu;
         private System.Windows.Forms.Label lbl_Erreserbak;
         private System.Windows.Forms.Label lbl_Kontsumizioak;
+        private System.Windows.Forms.Label lbl_erab;
+        private System.Windows.Forms.Label lbl_idBaz;
     }
 }

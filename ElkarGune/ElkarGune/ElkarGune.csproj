@@ -98,61 +98,62 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs">
+    <Compile Include="Interfazeak\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin.Designer.cs">
+    <Compile Include="Interfazeak\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
     <Compile Include="DBKonexioa.cs" />
-    <Compile Include="Kontsumizioak.cs">
+    <Compile Include="KontrolKontsumizioak.cs" />
+    <Compile Include="Interfazeak\Kontsumizioak.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kontsumizioak.Designer.cs">
+    <Compile Include="Interfazeak\Kontsumizioak.Designer.cs">
       <DependentUpon>Kontsumizioak.cs</DependentUpon>
     </Compile>
-    <Compile Include="KontsumizioElementuak.cs">
+    <Compile Include="Interfazeak\KontsumizioElementuak.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KontsumizioElementuak.Designer.cs">
+    <Compile Include="Interfazeak\KontsumizioElementuak.Designer.cs">
       <DependentUpon>KontsumizioElementuak.cs</DependentUpon>
     </Compile>
-    <Compile Include="Kopurua.cs">
+    <Compile Include="Interfazeak\Kopurua.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kopurua.Designer.cs">
+    <Compile Include="Interfazeak\Kopurua.Designer.cs">
       <DependentUpon>Kopurua.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Interfazeak\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Interfazeak\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="Interfazeak\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="Interfazeak\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Admin.resx">
+    <EmbeddedResource Include="Interfazeak\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kontsumizioak.resx">
+    <EmbeddedResource Include="Interfazeak\Kontsumizioak.resx">
       <DependentUpon>Kontsumizioak.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KontsumizioElementuak.resx">
+    <EmbeddedResource Include="Interfazeak\KontsumizioElementuak.resx">
       <DependentUpon>KontsumizioElementuak.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kopurua.resx">
+    <EmbeddedResource Include="Interfazeak\Kopurua.resx">
       <DependentUpon>Kopurua.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Interfazeak\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
+    <EmbeddedResource Include="Interfazeak\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

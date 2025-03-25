@@ -73,10 +73,11 @@
             // 
             this.kop_ok.BackColor = System.Drawing.Color.Transparent;
             this.kop_ok.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.kop_ok.Location = new System.Drawing.Point(593, 500);
+            this.kop_ok.Location = new System.Drawing.Point(587, 496);
             this.kop_ok.Name = "kop_ok";
             this.kop_ok.Size = new System.Drawing.Size(81, 76);
             this.kop_ok.TabIndex = 40;
+            this.kop_ok.Click += new System.EventHandler(this.kop_ok_Click);
             // 
             // kop_0
             // 

@@ -12,9 +12,13 @@ namespace ElkarGune
 {
     public partial class Admin: Form
     {
-        public Admin(String erabiltzailea)
+        public Admin(int idBazkidea, String erabiltzailea)
         {
             InitializeComponent();
+            String erab = erabiltzailea;
+            int idBaz = idBazkidea;
+            lbl_erab.Text = erab.ToString();
+            lbl_IdBaz.Text = idBazkidea.ToString();
             label2.Text = "Kaixo " + erabiltzailea + "!";
         }
 
@@ -28,8 +32,10 @@ namespace ElkarGune
 
         private void btn_Bazkidea_Click(object sender, EventArgs e)
         {
+            String erabiltzailea = lbl_erab.Text;
+            int idBazkidea = Convert.ToInt32(lbl_IdBaz.Text);
             this.Hide();
-            Menu menu = new Menu();
+            Menu menu = new Menu(idBazkidea, erabiltzailea);
             menu.Show();
         }
 

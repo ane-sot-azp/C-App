@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,16 @@ namespace ElkarGune
         public Menu()
         {
             InitializeComponent();
+            
+        }
+        public Menu(int idBazkidea, String erabiltzailea)
+        {
+            InitializeComponent();
+            String erab = erabiltzailea;
+            int idBaz = idBazkidea;
+            lbl_idBaz.Text = idBaz.ToString();
+            lbl_erab.Text = erab;
+
         }
 
         private void Menu_Load(object sender, EventArgs e)
@@ -54,9 +65,13 @@ namespace ElkarGune
 
         private void lbl_Kontsumizioak_Click(object sender, EventArgs e)
         {
-            Kontsumizioak kontsumizioak = new Kontsumizioak();
+            int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
+            Kontsumizioak kontsumizioak = new Kontsumizioak(idBazkidea);
+            KontrolKontsumizioak kk = new KontrolKontsumizioak();
+            kk.FakturaSortu(idBazkidea);
             kontsumizioak.Show();
             this.Close();
+
         }
     }
 }

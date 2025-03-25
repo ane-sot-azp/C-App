@@ -28,9 +28,8 @@ namespace ElkarGune
         {
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
-            string erabiltzailea = txt_Erabiltzailea.Text;
-            string pasahitza = txt_Pasahitza.Text;
-            //MessageBox.Show(erabiltzailea + " " + pasahitza);
+            string erabiltzailea = txt_Erabiltzailea.Text.Trim();
+            string pasahitza = txt_Pasahitza.Text.Trim();
 
             if (string.IsNullOrEmpty(erabiltzailea) || string.IsNullOrEmpty(pasahitza))
             {
@@ -46,42 +45,37 @@ namespace ElkarGune
                 cmd.CommandText = query;
                 cmd.Parameters.AddWithValue("@erabiltzailea", erabiltzailea);
                 cmd.Parameters.AddWithValue("@pasahitza", pasahitza);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                if (dr.Read())
-                {
-                    dr.Close();
-                    dr.Dispose();
-                    MySqlCommand cmd2 = new MySqlCommand();
-                    cmd2.Connection = db.conn;
-                    cmd2.CommandText = "SELECT * FROM bazkidea WHERE erabiltzailea='" + erabiltzailea + "' AND pasahitza='" + pasahitza + "' AND admin=1";
-                    MySqlDataReader dr2 = cmd2.ExecuteReader();
 
-                    if (dr2.Read())
+                using (MySqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (dr.Read())
                     {
+                        int idBazkidea = Convert.ToInt32(dr["IdBazkidea"]);
+                        bool isAdmin = dr["admin"] != DBNull.Value && Convert.ToInt32(dr["admin"]) == 1;
+                        dr.Close(); // Cierra el DataReader antes de abrir otro formulario
+
                         this.Hide();
-                        Admin admin = new Admin(erabiltzailea);
-                        admin.Show();
+                        if (isAdmin)
+                        {
+                            Admin admin = new Admin(idBazkidea, erabiltzailea);
+                            admin.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ongi etorri " + erabiltzailea);
+                            Menu menu = new Menu(idBazkidea, erabiltzailea);
+                            menu.Show();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Ongi etorri " + erabiltzailea);
-                        this.Hide();
-                        Menu menu = new Menu();
-                        menu.Show();
+                        MessageBox.Show("Erabiltzailea edo pasahitza ez da zuzena");
+                        txt_Pasahitza.Text = "";
                     }
-
                 }
-                else
-                {
-                    MessageBox.Show("Erabiltzailea edo pasahitza ez da zuzena");
-                    txt_Pasahitza.Text = "";
-                }
-
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Errorea: " + ex.Message);
             }
             finally

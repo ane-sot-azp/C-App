@@ -12,9 +12,15 @@ namespace ElkarGune
 {
     public partial class Kontsumizioak: Form
     {
+        private int idBazk;
         public Kontsumizioak()
         {
             InitializeComponent();
+        }
+        public Kontsumizioak(int idBazkidea)
+        {
+            InitializeComponent();
+            idBazk = idBazkidea;
         }
 
         private void lbl_ItxiMenu_Click(object sender, EventArgs e)
@@ -48,43 +54,45 @@ namespace ElkarGune
         private void lbl_Ardoak_Click(object sender, EventArgs e)
         {
             int idProduktuMota = 1;
-            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota);
+            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota, idBazk);
             kElem.Show();
         }
 
         private void lbl_Sagardoak_Click(object sender, EventArgs e)
         {
             int idProduktuMota = 5;
-            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota);
+            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota, idBazk);
             kElem.Show();
         }
 
         private void lbl_Garagardoak_Click(object sender, EventArgs e)
         {
             int idProduktuMota = 3;
-            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota);
+            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota, idBazk);
             kElem.Show();
         }
 
         private void lbl_Freskagarriak_Click(object sender, EventArgs e)
         {
             int idProduktuMota = 2;
-            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota);
+            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota, idBazk);
             kElem.Show();
         }
 
         private void lbl_Kafeak_Click(object sender, EventArgs e)
         {
             int idProduktuMota = 6;
-            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota);
+            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota, idBazk);
             kElem.Show();
         }
 
         private void lbl_Likoreak_Click(object sender, EventArgs e)
         {
             int idProduktuMota = 4;
-            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota);
+            KontsumizioElementuak kElem = new KontsumizioElementuak(idProduktuMota, idBazk);
             kElem.Show();
         }
+
+        
     }
 }

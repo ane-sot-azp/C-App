@@ -15,10 +15,13 @@ namespace ElkarGune
     public partial class Kopurua : Form
     {
         private float prezioa;
-        public Kopurua(int idProduktua)
+        private int idBazk;
+
+        public Kopurua(int idProduktua, int idBazkidea)
         {
             InitializeComponent();
             int idProdutkua = idProduktua;
+            idBazk = idBazkidea;
             idProd.Text = idProdutkua.ToString();
         }
 
@@ -174,7 +177,36 @@ namespace ElkarGune
 
         }
 
+        private void kop_ok_Click(object sender, EventArgs e)
+        {
+            KontrolKontsumizioak kk = new KontrolKontsumizioak();
+            int idProduktua = Convert.ToInt32(idProd.Text);
+            int kopurua = Convert.ToInt32(lbl_kopurua.Text);
+            DateTime data = DateTime.Today;
+
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data";
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = db.conn;
+            cmd.CommandText = select;
+            cmd.Parameters.AddWithValue("@idBazkidea", idBazk);
+            cmd.Parameters.AddWithValue("@data", data);
 
 
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                int fraZkia = Convert.ToInt32(dr["idFaktura"]);
+                //MessageBox.Show("Produktua: " + idProduktua + " Kopurua: " + kopurua + " FraZkia: " + fraZkia);
+                kk.Txertatu(idProduktua, kopurua, fraZkia, prezioa);
+            }
+            else
+            {
+                MessageBox.Show("Ups");
+            }
+            this.Close();
+        }
     }
 }
