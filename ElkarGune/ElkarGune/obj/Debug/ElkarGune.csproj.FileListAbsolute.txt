@@ -89,3 +89,4 @@ C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarG
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.csproj.Up2Date
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Kontsumizioak.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.KontsumizioElementuak.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Kopurua.resources

@@ -91,9 +91,8 @@ namespace ElkarGune
             if (sender is PictureBox pictureBox && pictureBox.Tag != null)
             {
                 int idProduktua = (int)pictureBox.Tag;
-                MessageBox.Show($"ID del producto seleccionado: {idProduktua}");
-
-                // Aquí puedes hacer lo que necesites con el ID (abrir detalles, agregar al carrito, etc.)
+                Kopurua kopurua = new Kopurua(idProduktua);
+                kopurua.Show();                
             }
         }
     }
