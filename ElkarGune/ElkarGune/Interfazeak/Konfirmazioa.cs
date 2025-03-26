@@ -54,6 +54,8 @@ namespace ElkarGune.Interfazeak
             // Asignar el DataTable como origen de datos del DataGridView
             dataGridView1.DataSource = dt;
 
+            dataGridView1.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dataGridView1_DataBindingComplete);
+
             db.conn.Close();
         }
 
@@ -147,7 +149,30 @@ namespace ElkarGune.Interfazeak
                 this.Close();  // Cierra la aplicación si el usuario elige "Bai" (Sí)
             }
         }
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Ajustar las columnas del DataGridView con porcentajes después de la carga de datos
+            AjustarColumnasPorcentaje(dataGridView1);
+        }
+        private void AjustarColumnasPorcentaje(DataGridView dataGridView)
+        {
+            // Calcula el ancho total del DataGridView
+            int anchoTotal = dataGridView.Width;
 
-        
+            // Define el porcentaje para cada columna (por ejemplo, 30% para la primera columna, 50% para la segunda, etc.)
+            double[] porcentajes = { 0.50, 0.20, 0.10, 0.20 }; // Asegúrate de que la suma sea 1 o 100%
+
+            // Ajusta la anchura de cada columna basado en los porcentajes
+            for (int i = 0; i < dataGridView.Columns.Count; i++)
+            {
+                // Calcula el ancho de la columna basado en el porcentaje
+                int anchoColumna = (int)(anchoTotal * porcentajes[i]);
+
+                // Establece el ancho de la columna
+                dataGridView.Columns[i].Width = anchoColumna;
+            }
+        }
+
+
     }
 }
