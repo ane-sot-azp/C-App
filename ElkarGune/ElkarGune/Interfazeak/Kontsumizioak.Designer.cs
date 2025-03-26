@@ -37,6 +37,7 @@
             this.lbl_Kafeak = new System.Windows.Forms.Label();
             this.lbl_Freskagarriak = new System.Windows.Forms.Label();
             this.lbl_Ordaindu = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_SaioaItxiKontsumizioak
@@ -54,7 +55,7 @@
             // 
             this.lbl_ItxiMenu.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ItxiMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_ItxiMenu.Location = new System.Drawing.Point(1446, 16);
+            this.lbl_ItxiMenu.Location = new System.Drawing.Point(1445, 16);
             this.lbl_ItxiMenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_ItxiMenu.Name = "lbl_ItxiMenu";
             this.lbl_ItxiMenu.Size = new System.Drawing.Size(59, 58);
@@ -87,7 +88,7 @@
             // 
             this.lbl_Garagardoak.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Garagardoak.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_Garagardoak.Location = new System.Drawing.Point(999, 115);
+            this.lbl_Garagardoak.Location = new System.Drawing.Point(999, 114);
             this.lbl_Garagardoak.Name = "lbl_Garagardoak";
             this.lbl_Garagardoak.Size = new System.Drawing.Size(227, 215);
             this.lbl_Garagardoak.TabIndex = 12;
@@ -98,7 +99,7 @@
             // 
             this.lbl_Likoreak.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Likoreak.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_Likoreak.Location = new System.Drawing.Point(999, 371);
+            this.lbl_Likoreak.Location = new System.Drawing.Point(999, 370);
             this.lbl_Likoreak.Name = "lbl_Likoreak";
             this.lbl_Likoreak.Size = new System.Drawing.Size(227, 215);
             this.lbl_Likoreak.TabIndex = 15;
@@ -109,7 +110,7 @@
             // 
             this.lbl_Kafeak.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Kafeak.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_Kafeak.Location = new System.Drawing.Point(649, 371);
+            this.lbl_Kafeak.Location = new System.Drawing.Point(649, 370);
             this.lbl_Kafeak.Name = "lbl_Kafeak";
             this.lbl_Kafeak.Size = new System.Drawing.Size(227, 215);
             this.lbl_Kafeak.TabIndex = 14;
@@ -120,7 +121,7 @@
             // 
             this.lbl_Freskagarriak.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Freskagarriak.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_Freskagarriak.Location = new System.Drawing.Point(300, 371);
+            this.lbl_Freskagarriak.Location = new System.Drawing.Point(300, 370);
             this.lbl_Freskagarriak.Name = "lbl_Freskagarriak";
             this.lbl_Freskagarriak.Size = new System.Drawing.Size(227, 215);
             this.lbl_Freskagarriak.TabIndex = 13;
@@ -135,6 +136,14 @@
             this.lbl_Ordaindu.Name = "lbl_Ordaindu";
             this.lbl_Ordaindu.Size = new System.Drawing.Size(181, 215);
             this.lbl_Ordaindu.TabIndex = 16;
+            this.lbl_Ordaindu.Click += new System.EventHandler(this.lbl_Ordaindu_Click);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(67, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 17;
             // 
             // Kontsumizioak
             // 
@@ -142,7 +151,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ElkarGune.Properties.Resources.KONTSUMOA;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1522, 696);
+            this.ClientSize = new System.Drawing.Size(1523, 697);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_Ordaindu);
             this.Controls.Add(this.lbl_Likoreak);
             this.Controls.Add(this.lbl_Kafeak);
@@ -153,8 +163,10 @@
             this.Controls.Add(this.lbl_ItxiMenu);
             this.Controls.Add(this.lbl_SaioaItxiKontsumizioak);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Kontsumizioak";
             this.Text = "Kontsumizioak";
+            this.Load += new System.EventHandler(this.Kontsumizioak_Load);
             this.ResumeLayout(false);
 
         }
@@ -170,5 +182,6 @@
         private System.Windows.Forms.Label lbl_Kafeak;
         private System.Windows.Forms.Label lbl_Freskagarriak;
         private System.Windows.Forms.Label lbl_Ordaindu;
+        private System.Windows.Forms.Label label1;
     }
 }

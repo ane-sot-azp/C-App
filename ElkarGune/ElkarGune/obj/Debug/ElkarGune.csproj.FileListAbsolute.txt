@@ -90,3 +90,5 @@ C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarG
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Kontsumizioak.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.KontsumizioElementuak.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Kopurua.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.Konfirmazioa.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.Fakturak.resources

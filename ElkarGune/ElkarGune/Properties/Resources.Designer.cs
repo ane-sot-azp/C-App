@@ -93,6 +93,16 @@ namespace ElkarGune.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FONDOAK_5 {
+            get {
+                object obj = ResourceManager.GetObject("FONDOAK_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap KONTSUMOA {
             get {
                 object obj = ResourceManager.GetObject("KONTSUMOA", resourceCulture);

@@ -181,31 +181,44 @@ namespace ElkarGune
         {
             KontrolKontsumizioak kk = new KontrolKontsumizioak();
             int idProduktua = Convert.ToInt32(idProd.Text);
-            int kopurua = Convert.ToInt32(lbl_kopurua.Text);
+            
             DateTime data = DateTime.Today;
-
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
-
-            string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data";
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = db.conn;
-            cmd.CommandText = select;
-            cmd.Parameters.AddWithValue("@idBazkidea", idBazk);
-            cmd.Parameters.AddWithValue("@data", data);
-
-
-            MySqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
+            if (string.IsNullOrEmpty(lbl_kopurua.Text))
             {
-                int fraZkia = Convert.ToInt32(dr["idFaktura"]);
-                //MessageBox.Show("Produktua: " + idProduktua + " Kopurua: " + kopurua + " FraZkia: " + fraZkia);
-                kk.Txertatu(idProduktua, kopurua, fraZkia, prezioa);
+                MessageBox.Show("Kopurua sartu behar duzu jarraitu ahal izateko!");
+                return;
             }
-            else
-            {
-                MessageBox.Show("Ups");
+            else {
+
+                int kopurua = Convert.ToInt32(lbl_kopurua.Text);
+                DBKonexioa db = new DBKonexioa();
+                db.konektatu();
+
+                string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = db.conn;
+                cmd.CommandText = select;
+                cmd.Parameters.AddWithValue("@idBazkidea", idBazk);
+                cmd.Parameters.AddWithValue("@data", data.ToString("yyyy-MM-dd"));
+
+
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    int fraZkia = Convert.ToInt32(dr["idFaktura"]);
+                    //MessageBox.Show("Produktua: " + idProduktua + " Kopurua: " + kopurua + " FraZkia: " + fraZkia);
+                    kk.Txertatu(idProduktua, kopurua, fraZkia, prezioa);
+                }
+                else
+                {
+                    MessageBox.Show("Ups");
+                }
+                this.Close();
             }
+        }
+
+        private void lbl_ItxiMenu_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

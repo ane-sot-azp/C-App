@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,12 @@ namespace ElkarGune
             InitializeComponent();
             
         }
+        public Menu(int idBazkidea)
+        {
+            InitializeComponent();
+            int idBaz = idBazkidea;
+            lbl_idBaz.Text = idBaz.ToString();
+        }
         public Menu(int idBazkidea, String erabiltzailea)
         {
             InitializeComponent();
@@ -28,10 +35,6 @@ namespace ElkarGune
 
         }
 
-        private void Menu_Load(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void label3_Click(object sender, EventArgs e)
@@ -66,11 +69,10 @@ namespace ElkarGune
         private void lbl_Kontsumizioak_Click(object sender, EventArgs e)
         {
             int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
-            Kontsumizioak kontsumizioak = new Kontsumizioak(idBazkidea);
             KontrolKontsumizioak kk = new KontrolKontsumizioak();
             kk.FakturaSortu(idBazkidea);
-            kontsumizioak.Show();
             this.Close();
+
 
         }
     }

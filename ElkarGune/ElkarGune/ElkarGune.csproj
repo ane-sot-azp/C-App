@@ -105,6 +105,18 @@
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
     <Compile Include="DBKonexioa.cs" />
+    <Compile Include="Interfazeak\Fakturak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\Fakturak.Designer.cs">
+      <DependentUpon>Fakturak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfazeak\Konfirmazioa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\Konfirmazioa.Designer.cs">
+      <DependentUpon>Konfirmazioa.cs</DependentUpon>
+    </Compile>
     <Compile Include="KontrolKontsumizioak.cs" />
     <Compile Include="Interfazeak\Kontsumizioak.cs">
       <SubType>Form</SubType>
@@ -140,6 +152,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Interfazeak\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfazeak\Fakturak.resx">
+      <DependentUpon>Fakturak.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfazeak\Konfirmazioa.resx">
+      <DependentUpon>Konfirmazioa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfazeak\Kontsumizioak.resx">
       <DependentUpon>Kontsumizioak.cs</DependentUpon>
@@ -200,6 +218,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\KOPURUAK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\PRODUKTUAK\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FONDOAK_5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ElkarGune.Interfazeak;
+using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +13,10 @@ using System.Windows.Forms;
 
 namespace ElkarGune
 {
-    public partial class Kontsumizioak: Form
+    public partial class Kontsumizioak : Form
     {
-        private int idBazk;
+        public virtual int idBazk { get; set; }
+        private int fraZkia;
         public Kontsumizioak()
         {
             InitializeComponent();
@@ -21,18 +25,27 @@ namespace ElkarGune
         {
             InitializeComponent();
             idBazk = idBazkidea;
+            label1.Text=idBazk.ToString();
+        }
+        public Kontsumizioak(int idBazkidea, int fraZenbakia)
+        {
+            InitializeComponent();
+             idBazk = idBazkidea;
+            fraZkia = fraZenbakia;
         }
 
         private void lbl_ItxiMenu_Click(object sender, EventArgs e)
         {
-            DialogResult erantzuna = MessageBox.Show("Programatik atera nahi duzu?",
+            DialogResult erantzuna = MessageBox.Show("Menura bueltatu nahi duzu?",
                                          "Konfirmatu irteera",
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);
 
             if (erantzuna == DialogResult.Yes)
             {
-                Application.Exit(); // Cierra la aplicación si el usuario elige "Bai" (Sí)
+                Menu menu = new Menu(idBazk);
+                menu.Show();
+                this.Close(); // Cierra la aplicación si el usuario elige "Bai" (Sí)
             }
         }
 
@@ -93,6 +106,19 @@ namespace ElkarGune
             kElem.Show();
         }
 
-        
+        private void Kontsumizioak_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Ordaindu_Click(object sender, EventArgs e)
+        {
+
+            Konfirmazioa konfirmazioa = new Konfirmazioa(idBazk, fraZkia);
+            konfirmazioa.Show();
+            this.Close();
+        }
+
+
     }
 }

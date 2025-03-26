@@ -44,7 +44,7 @@
             this.label1.Location = new System.Drawing.Point(177, 45);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(198, 20);
+            this.label1.Size = new System.Drawing.Size(246, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nola hasi nahi duzu saioa?";
             // 
@@ -83,6 +83,7 @@
             // 
             // lbl_erab
             // 
+            this.lbl_erab.ForeColor = System.Drawing.SystemColors.Control;
             this.lbl_erab.Location = new System.Drawing.Point(12, 9);
             this.lbl_erab.Name = "lbl_erab";
             this.lbl_erab.Size = new System.Drawing.Size(100, 23);
@@ -90,6 +91,7 @@
             // 
             // lbl_IdBaz
             // 
+            this.lbl_IdBaz.ForeColor = System.Drawing.SystemColors.Control;
             this.lbl_IdBaz.Location = new System.Drawing.Point(12, 48);
             this.lbl_IdBaz.Name = "lbl_IdBaz";
             this.lbl_IdBaz.Size = new System.Drawing.Size(100, 23);

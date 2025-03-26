@@ -56,91 +56,134 @@ namespace ElkarGune
         }
         public void FakturaSortu(int idBazkidea)
         {
-            int idBaz = idBazkidea;
             DateTime data = DateTime.Today;
+            int fraZkia = 0;
 
-            if (!FakturaBilatu(idBaz, data))
+            if (!FakturaBilatu(idBazkidea, data)) // Faktura existitzen ez bada bakarrik sortu
             {
-                DBKonexioa db = new DBKonexioa();
-                db.konektatu();
-
-                if (db.conn.State == ConnectionState.Open)
+                using (DBKonexioa db = new DBKonexioa())
                 {
-                    MySqlTransaction tr = db.conn.BeginTransaction();
-                    try
-                    {
-                        string insert = "INSERT INTO fakturak (idBazkidea, erreserbaZkia, data) VALUES (@idBazkidea, @erreserbaZkia, @data)";
-                        MySqlCommand cmd = new MySqlCommand();
-                        cmd.Connection = db.conn;
-                        cmd.CommandText = insert;
-                        cmd.Parameters.AddWithValue("@idBazkidea", idBaz);
-                        cmd.Parameters.AddWithValue("@erreserbaZkia", 1);
-                        cmd.Parameters.AddWithValue("@data", data);
+                    db.konektatu();
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        tr.Commit();
-                    }
-                    catch (Exception ex)
+                    if (db.conn.State == ConnectionState.Open)
                     {
-                        tr.Rollback();
-                        MessageBox.Show(ex.ToString());
-                    }
-                    finally
-                    {
-                        db.conn.Close();
-                    }
+                        MySqlTransaction tr = db.conn.BeginTransaction();
+                        try
+                        {
+                            string insert = "INSERT INTO fakturak (idBazkidea, erreserbaZkia, data) VALUES (@idBazkidea, @erreserbaZkia, @data)";
+                            using (MySqlCommand cmd = new MySqlCommand(insert, db.conn, tr))
+                            {
+                                cmd.Parameters.AddWithValue("@idBazkidea", idBazkidea);
+                                cmd.Parameters.AddWithValue("@erreserbaZkia", 1);
+                                cmd.Parameters.AddWithValue("@data", data.ToString("yyyy-MM-dd"));
+                                cmd.ExecuteNonQuery();
+                            }
 
+                            tr.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            tr.Rollback();
+                            MessageBox.Show("Errorea faktura sortzean: " + ex.Message);
+                            return;
+                        }
+                    }
                 }
             }
 
-            DBKonexioa db2 = new DBKonexioa();
-            db2.konektatu();
-
-            string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data";
-            MySqlCommand cmd2 = new MySqlCommand();
-            cmd2.Connection = db2.conn;
-            cmd2.CommandText = select;
-            cmd2.Parameters.AddWithValue("@idBazkidea", idBaz);
-            cmd2.Parameters.AddWithValue("@data", data);
-
-            MySqlDataReader dr = cmd2.ExecuteReader();
-
-            if (dr.Read())
+            // Fakturaren ID-a lortu
+            using (DBKonexioa db2 = new DBKonexioa())
             {
-                int fraZkia = Convert.ToInt32(dr["idFaktura"]);
-                MessageBox.Show("FraZkia: " + fraZkia);
-                db2.conn.Close();
+                db2.konektatu();
+
+                string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
+                using (MySqlCommand cmd2 = new MySqlCommand(select, db2.conn))
+                {
+                    cmd2.Parameters.AddWithValue("@idBazkidea", idBazkidea);
+                    cmd2.Parameters.AddWithValue("@data", data.ToString("yyyy-MM-dd"));
+
+                    using (MySqlDataReader dr = cmd2.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            fraZkia = Convert.ToInt32(dr["idFaktura"]);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Arazoren bat egon da faktura aurkitzean.");
+                            return;
+                        }
+                    }
+                }
             }
-            else
-            {
-                MessageBox.Show("Arazoren bat egon da.");
-                db2.conn.Close();
-            }
+            
+
+            // Kontsumizioak pantaila ireki
+            Kontsumizioak kontsumizioak = new Kontsumizioak(idBazkidea, fraZkia);
+            kontsumizioak.Show();
         }
         public bool FakturaBilatu(int idBazkidea, DateTime data)
         {
+            bool exists = false; // Hasieran, faktura ez dagoela suposatuko dugu
+
+            using (DBKonexioa db = new DBKonexioa())
+            {
+                db.konektatu();
+
+                string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala IS NULL";
+                using (MySqlCommand cmd = new MySqlCommand(select, db.conn))
+                {
+                    cmd.Parameters.AddWithValue("@idBazkidea", idBazkidea);
+                    cmd.Parameters.AddWithValue("@data", data.ToString("yyyy-MM-dd"));
+
+                    using (MySqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read()) // Datu bat irakurtzen badu, faktura existitzen da
+                        {
+                            exists = true;
+                        }
+                    }
+                }
+            }
+
+            return exists; // Faktura existitzen bada true, bestela false
+        }
+
+        public void KontsumizioaErregistratu(int fraZenbakia, float total)
+        {
+            int fraZkia = fraZenbakia;
+            float totala = total;
+
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
 
-            string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data";
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = db.conn;
-            cmd.CommandText = select;
-            cmd.Parameters.AddWithValue("@idBazkidea", idBazkidea);
-            cmd.Parameters.AddWithValue("@data", data);
-
-            MySqlDataReader dr = cmd.ExecuteReader();
-
-            if (dr.Read())
+            if (db.conn.State == ConnectionState.Open)
             {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+                MySqlTransaction tr = db.conn.BeginTransaction();
+                try
+                {
+                    string update = "UPDATE fakturak SET totala = @totala WHERE idFaktura= @fraZkia";
+                    MySqlCommand cmd = new MySqlCommand();
+                    cmd.Connection = db.conn;
+                    cmd.CommandText = update;
+                    cmd.Parameters.AddWithValue("@totala", totala);
+                    cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
 
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    tr.Commit();
+                }
+                catch (Exception ex)
+                {
+                    tr.Rollback();
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    db.conn.Close();
+                }
+
+            }
         }
     }
 }
