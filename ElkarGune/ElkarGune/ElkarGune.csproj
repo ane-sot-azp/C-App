@@ -219,11 +219,51 @@
   <ItemGroup>
     <None Include="Resources\KOPURUAK.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\PRODUKTUAK\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\FONDOAK_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA CASTILLO DE MONJARDIN.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA CUNE.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA LEGARIS.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA ORCHIDEA.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA VIÑA POMAL.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\CAVA ANNA BLANC DE BLANCS.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\CAVA ANNA DE CODORNIU.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\CAVA CODORNIU BRUT.png" />
+    <Content Include="Resources\PRODUKTUAK\ARDOAK\TXAKOLI TXOMIN ETXANIZ.png" />
+    <Content Include="Resources\PRODUKTUAK\FRESKAGARRIAK\COCA COLA.png" />
+    <Content Include="Resources\PRODUKTUAK\FRESKAGARRIAK\KAS LIMON.png" />
+    <Content Include="Resources\PRODUKTUAK\FRESKAGARRIAK\KAS NARANJA.png" />
+    <Content Include="Resources\PRODUKTUAK\FRESKAGARRIAK\NORDIC.png" />
+    <Content Include="Resources\PRODUKTUAK\FRESKAGARRIAK\RED BULL.png" />
+    <Content Include="Resources\PRODUKTUAK\FRESKAGARRIAK\SCHWEPPES.png" />
+    <Content Include="Resources\PRODUKTUAK\GARAGARDOAK\FREE DAMM.png" />
+    <Content Include="Resources\PRODUKTUAK\GARAGARDOAK\KELER.png" />
+    <Content Include="Resources\PRODUKTUAK\GARAGARDOAK\SAN MIGUEL.png" />
+    <Content Include="Resources\PRODUKTUAK\GARAGARDOAK\VOLL DAMM.png" />
+    <Content Include="Resources\PRODUKTUAK\KAFEAK\EBAKIA D.png" />
+    <Content Include="Resources\PRODUKTUAK\KAFEAK\EBAKIA.png" />
+    <Content Include="Resources\PRODUKTUAK\KAFEAK\HUTSA D.png" />
+    <Content Include="Resources\PRODUKTUAK\KAFEAK\HUTSA.png" />
+    <Content Include="Resources\PRODUKTUAK\KAFEAK\KAFESNEA D.png" />
+    <Content Include="Resources\PRODUKTUAK\KAFEAK\KAFESNEA.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\ABSOLUT VODKA.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\BAILEYS.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\COGNAC HENNESSY.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\GIN BEEFEATER.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\GIN BOMBAY.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\GIN TANQUERAY.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\PACHARAN LA NAVARRA.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\RON BARCELÓ.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\RUAVIEJA.png" />
+    <Content Include="Resources\PRODUKTUAK\LIKOREAK\WHISKEY MACALLAN.png" />
+    <Content Include="Resources\PRODUKTUAK\SAGARDOAK\SAGARDOA BEREZIARTUA.png" />
+    <Content Include="Resources\PRODUKTUAK\SAGARDOAK\SAGARDOA GARTZIATEGI.png" />
+    <Content Include="Resources\PRODUKTUAK\SAGARDOAK\SAGARDOA ISASTEGI.png" />
+    <Content Include="Resources\PRODUKTUAK\SAGARDOAK\SAGARDOA PETRITEGI.png" />
+    <Content Include="Resources\PRODUKTUAK\SAGARDOAK\SAGARDOA ZAPIAIN.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

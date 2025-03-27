@@ -3,7 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|c:\\users\\anere\\onedrive - goierri eskola\\escritorio\\c#app\\c-app\\elkargune\\elkargune\\interfazeak\\konfirmazioa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|c:\\users\\anere\\onedrive - goierri eskola\\escritorio\\c#app\\c-app\\elkargune\\elkargune\\interfazeak\\kontsumizioelementuak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|solutionrelative:elkargune\\interfazeak\\kontsumizioelementuak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\elkargune\\interfazeak\\kontsumizioelementuak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|solutionrelative:elkargune\\interfazeak\\kontsumizioelementuak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\elkargune\\interfazeak\\kontsumizioak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|solutionrelative:elkargune\\interfazeak\\kontsumizioak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\elkargune\\interfazeak\\konfirmazioa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6E4F62CF-9211-460D-937A-0DB7E736D48E}|ElkarGune\\ElkarGune.csproj|solutionrelative:elkargune\\interfazeak\\konfirmazioa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -26,11 +38,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "KontsumizioElementuak.cs",
+              "DocumentMoniker": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\KontsumizioElementuak.cs",
+              "RelativeDocumentMoniker": "ElkarGune\\Interfazeak\\KontsumizioElementuak.cs",
+              "ToolTip": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\KontsumizioElementuak.cs",
+              "RelativeToolTip": "ElkarGune\\Interfazeak\\KontsumizioElementuak.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAUwEEAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T16:33:30.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "KontsumizioElementuak.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\KontsumizioElementuak.cs",
+              "RelativeDocumentMoniker": "ElkarGune\\Interfazeak\\KontsumizioElementuak.cs",
+              "ToolTip": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\KontsumizioElementuak.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ElkarGune\\Interfazeak\\KontsumizioElementuak.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T16:33:27.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Kontsumizioak.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\Kontsumizioak.cs",
+              "RelativeDocumentMoniker": "ElkarGune\\Interfazeak\\Kontsumizioak.cs",
+              "ToolTip": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\Kontsumizioak.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ElkarGune\\Interfazeak\\Kontsumizioak.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T16:33:07.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Konfirmazioa.Designer.cs",
               "DocumentMoniker": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\Konfirmazioa.Designer.cs",
               "RelativeDocumentMoniker": "ElkarGune\\Interfazeak\\Konfirmazioa.Designer.cs",
@@ -38,12 +85,11 @@
               "RelativeToolTip": "ElkarGune\\Interfazeak\\Konfirmazioa.Designer.cs",
               "ViewState": "AgIAAD0AAAAAAAAAAAAEwFYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T18:36:04.686Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T18:36:04.686Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Fakturak.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\Fakturak.cs",
               "RelativeDocumentMoniker": "ElkarGune\\Interfazeak\\Fakturak.cs",
@@ -54,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Konfirmazioa.cs",
               "DocumentMoniker": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\Konfirmazioa.cs",
               "RelativeDocumentMoniker": "ElkarGune\\Interfazeak\\Konfirmazioa.cs",
@@ -62,20 +108,18 @@
               "RelativeToolTip": "ElkarGune\\Interfazeak\\Konfirmazioa.cs",
               "ViewState": "AgIAAI0AAAAAAAAAAAAlwKIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T17:43:13.399Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T17:43:13.399Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Konfirmazioa.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\Konfirmazioa.cs",
               "RelativeDocumentMoniker": "ElkarGune\\Interfazeak\\Konfirmazioa.cs",
               "ToolTip": "C:\\Users\\anere\\OneDrive - Goierri Eskola\\Escritorio\\C#App\\C-App\\ElkarGune\\ElkarGune\\Interfazeak\\Konfirmazioa.cs [Dise\u00F1o]",
               "RelativeToolTip": "ElkarGune\\Interfazeak\\Konfirmazioa.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T17:43:08.842Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-03-26T17:43:08.842Z"
             }
           ]
         }

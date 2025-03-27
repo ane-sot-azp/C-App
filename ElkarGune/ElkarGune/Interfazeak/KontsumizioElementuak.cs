@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,7 @@ namespace ElkarGune
             MySqlDataReader dr = cmd.ExecuteReader();
 
             int index = 1;
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Resources");
             while (dr.Read() && index <= 12)
             {
                 // Crea un DataTable y carga los resultados
@@ -56,15 +58,24 @@ namespace ElkarGune
                 String imageUrl = dr["irudia"].ToString();
                 int idProduktua = Convert.ToInt32(dr["idProduktua"]);
 
+
                 if (!string.IsNullOrEmpty(imageUrl))
                 {
                     try
                     {
-                        Control pic = Controls.Find("pictureBox" + index, true).FirstOrDefault();
-                        if (pic is PictureBox)
+                        string imagePath = Path.Combine(basePath, imageUrl);
+                        if (File.Exists(imagePath))
                         {
-                            ((PictureBox)pic).Load(imageUrl);
-                            ((PictureBox)pic).Tag = idProduktua;
+                            Control pic = Controls.Find("pictureBox" + index, true).FirstOrDefault();
+                            if (pic is PictureBox)
+                            {
+                                ((PictureBox)pic).Load(imagePath);
+                                ((PictureBox)pic).Tag = idProduktua;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Imagen no encontrada: " + imagePath);
                         }
                     }
                     catch (Exception ex)
@@ -82,7 +93,7 @@ namespace ElkarGune
         }
 
 
-        
+
 
         private void lbl_ItxiMenu_Click(object sender, EventArgs e)
         {
