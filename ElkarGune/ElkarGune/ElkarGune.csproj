@@ -98,13 +98,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfazeak\Abisuak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\Abisuak.Designer.cs">
+      <DependentUpon>Abisuak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfazeak\ErreserbakIkusi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\ErreserbakIkusi.Designer.cs">
+      <DependentUpon>ErreserbakIkusi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfazeak\ErreserbaKudeaketa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\ErreserbaKudeaketa.Designer.cs">
+      <DependentUpon>ErreserbaKudeaketa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfazeak\Admin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Interfazeak\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBKonexioa.cs" />
+    <Compile Include="Kontrolak\DBKonexioa.cs" />
+    <Compile Include="Interfazeak\ErreserbaHistorikoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\ErreserbaHistorikoa.Designer.cs">
+      <DependentUpon>ErreserbaHistorikoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfazeak\ErreserbakMenua.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\ErreserbakMenua.Designer.cs">
+      <DependentUpon>ErreserbakMenua.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfazeak\Fakturak.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,7 +147,16 @@
     <Compile Include="Interfazeak\Konfirmazioa.Designer.cs">
       <DependentUpon>Konfirmazioa.cs</DependentUpon>
     </Compile>
-    <Compile Include="KontrolKontsumizioak.cs" />
+    <Compile Include="Interfazeak\Mezuak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfazeak\Mezuak.Designer.cs">
+      <DependentUpon>Mezuak.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kontrolak\KontrolAdmin.cs" />
+    <Compile Include="Kontrolak\KontrolErreserbak.cs" />
+    <Compile Include="Kontrolak\KontrolMezuak.cs" />
+    <Compile Include="Kontrolak\KontrolProduktuak.cs" />
     <Compile Include="Interfazeak\Kontsumizioak.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,8 +189,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Interfazeak\Abisuak.resx">
+      <DependentUpon>Abisuak.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfazeak\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfazeak\ErreserbakIkusi.resx">
+      <DependentUpon>ErreserbakIkusi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfazeak\ErreserbakMenua.resx">
+      <DependentUpon>ErreserbakMenua.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfazeak\ErreserbaKudeaketa.resx">
+      <DependentUpon>ErreserbaKudeaketa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfazeak\ErreserbaHistorikoa.resx">
+      <DependentUpon>ErreserbaHistorikoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfazeak\Fakturak.resx">
       <DependentUpon>Fakturak.cs</DependentUpon>
@@ -173,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfazeak\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfazeak\Mezuak.resx">
+      <DependentUpon>Mezuak.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -219,11 +276,15 @@
   <ItemGroup>
     <None Include="Resources\KOPURUAK.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Klaseak\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FONDOAK_5.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ERRESERBAK.png" />
+    <None Include="Resources\ERRESERBAK_MENUA.png" />
     <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA CASTILLO DE MONJARDIN.png" />
     <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA CUNE.png" />
     <Content Include="Resources\PRODUKTUAK\ARDOAK\ARDOA LEGARIS.png" />

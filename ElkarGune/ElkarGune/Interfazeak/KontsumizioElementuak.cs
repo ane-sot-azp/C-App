@@ -39,7 +39,7 @@ namespace ElkarGune
             db.konektatu();
 
             int idPM = idProduktuMota;
-            string query = "SELECT idProduktua, irudia FROM bodega WHERE idProduktuMota=" + idPM;
+            string query = "SELECT idProduktua, irudia FROM produktua WHERE idProduktuMota=" + idPM;
 
             // Crea el comando para la consulta
             MySqlCommand cmd = new MySqlCommand();

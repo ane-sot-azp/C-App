@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace ElkarGune
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
             int idProduktua = Convert.ToInt32(idProd.Text);
-            string query = "SELECT * FROM bodega WHERE idProduktua=" + idProduktua;
+            string query = "SELECT * FROM produktua WHERE idProduktua=" + idProduktua;
 
             // Crea el comando para la consulta
             MySqlCommand cmd = new MySqlCommand();
@@ -48,11 +49,31 @@ namespace ElkarGune
 
                 String izena = dr["izena"].ToString();
                 prezioa = Convert.ToSingle(dr["salmentaPrezioa"]);
+                string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Resources");
                 String imageUrl = dr["irudia"].ToString();
 
+                if (!string.IsNullOrEmpty(imageUrl))
+                {
+                    try
+                    {
+                        string imagePath = Path.Combine(basePath, imageUrl);
+                        if (File.Exists(imagePath))
+                        {
+                            pictureBox1.Load(imagePath);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Imagen no encontrada: " + imagePath);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("No se pudo cargar la imagen:" + ex.Message);
+                    }
+                }
                 lbl_izena.Text = izena;
                 lbl_preziobase.Text = prezioa.ToString("F2") + "€";
-                pictureBox1.Load(imageUrl);
+                
 
             }
         }
@@ -179,16 +200,17 @@ namespace ElkarGune
 
         private void kop_ok_Click(object sender, EventArgs e)
         {
-            KontrolKontsumizioak kk = new KontrolKontsumizioak();
+            KontrolProduktuak kk = new KontrolProduktuak();
             int idProduktua = Convert.ToInt32(idProd.Text);
-            
+
             DateTime data = DateTime.Today;
             if (string.IsNullOrEmpty(lbl_kopurua.Text))
             {
                 MessageBox.Show("Kopurua sartu behar duzu jarraitu ahal izateko!");
                 return;
             }
-            else {
+            else
+            {
 
                 int kopurua = Convert.ToInt32(lbl_kopurua.Text);
                 DBKonexioa db = new DBKonexioa();

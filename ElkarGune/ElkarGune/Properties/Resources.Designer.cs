@@ -73,6 +73,26 @@ namespace ElkarGune.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ERRESERBAK {
+            get {
+                object obj = ResourceManager.GetObject("ERRESERBAK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ERRESERBAK_MENUA {
+            get {
+                object obj = ResourceManager.GetObject("ERRESERBAK_MENUA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FONDO {
             get {
                 object obj = ResourceManager.GetObject("FONDO", resourceCulture);

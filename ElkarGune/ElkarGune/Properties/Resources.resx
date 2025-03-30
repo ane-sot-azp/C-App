@@ -124,6 +124,12 @@
   <data name="ElkarGune" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ElkarGune.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FONDOAK_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FONDOAK_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ERRESERBAK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ERRESERBAK.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FONDO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FONDO1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,7 +145,7 @@
   <data name="KOPURUAK_TEKL" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\KOPURUAK_TEKL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FONDOAK_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FONDOAK_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ERRESERBAK_MENUA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ERRESERBAK_MENUA.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

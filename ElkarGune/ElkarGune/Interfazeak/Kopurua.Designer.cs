@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kopurua));
             this.lbl_prezioa = new System.Windows.Forms.Label();
             this.lbl_kopurua = new System.Windows.Forms.Label();
             this.kop_ok = new System.Windows.Forms.Label();
@@ -266,8 +267,10 @@
             this.Controls.Add(this.kop_2);
             this.Controls.Add(this.kop_1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Kopurua";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kopurua";
             this.Load += new System.EventHandler(this.Kopurua_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

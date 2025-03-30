@@ -30,7 +30,7 @@ namespace ElkarGune.Interfazeak
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
 
-            string select = "SELECT b.izena AS 'Produktua', k.prezioa AS 'Prezioa', k.kopurua AS 'Kopurua', k.totala AS 'Totala' FROM bodega b JOIN kontsumizioak k ON b.idProduktua=k.IdBodega WHERE k.IdFaktura = @fraZkia";
+            string select = "SELECT k.idProduktua, b.izena AS 'Produktua', k.prezioa AS 'Prezioa', k.kopurua AS 'Kopurua', k.totala AS 'Totala' FROM produktua b JOIN kontsumizioak k ON b.idProduktua=k.idProduktua WHERE k.IdFaktura = @fraZkia";
             MySqlCommand cmd = new MySqlCommand(select, db.conn);
             cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
 
@@ -58,6 +58,34 @@ namespace ElkarGune.Interfazeak
 
             db.conn.Close();
         }
+        private void KargatuDatuak()
+        {
+            float totala = 0;
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string select = "SELECT k.idProduktua, b.izena AS 'Produktua', k.prezioa AS 'Prezioa', k.kopurua AS 'Kopurua', k.totala AS 'Totala' FROM produktua b JOIN kontsumizioak k ON b.idProduktua=k.idProduktua WHERE k.IdFaktura = @fraZkia";
+            MySqlCommand cmd = new MySqlCommand(select, db.conn);
+            cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row["Totala"] != DBNull.Value)
+                {
+                    totala += Convert.ToSingle(row["Totala"]);
+                }
+            }
+
+            lbl_Totala.Text = totala.ToString("F2") + " €";
+            dataGridView1.DataSource = dt;
+
+            db.conn.Close();
+        }
+
 
         private void lbl_Atzera_Click(object sender, EventArgs e)
         {
@@ -72,67 +100,78 @@ namespace ElkarGune.Interfazeak
         {
             int fraZkia = 0;
             float totala = 0;
+            DialogResult erantzuna = MessageBox.Show("Zuzena da kontsumizioa?",
+                                         "Konfirmatu kontsumizioa.",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
 
-            try
+            if (erantzuna == DialogResult.Yes)
             {
-                DateTime data = DateTime.Today;
-                DBKonexioa db2 = new DBKonexioa();
-                db2.konektatu();
-
-                string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
-                MySqlCommand cmd2 = new MySqlCommand(select, db2.conn);
-                cmd2.Parameters.AddWithValue("@idBazkidea", idBazkidea);
-                cmd2.Parameters.AddWithValue("@data", data);
-
-                MySqlDataReader dr2 = cmd2.ExecuteReader();
-                if (dr2.Read())
+                try
                 {
-                    fraZkia = Convert.ToInt32(dr2["idFaktura"]);
+                    DateTime data = DateTime.Today;
+                    DBKonexioa db2 = new DBKonexioa();
+                    db2.konektatu();
+
+                    string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
+                    MySqlCommand cmd2 = new MySqlCommand(select, db2.conn);
+                    cmd2.Parameters.AddWithValue("@idBazkidea", idBazkidea);
+                    cmd2.Parameters.AddWithValue("@data", data);
+
+                    MySqlDataReader dr2 = cmd2.ExecuteReader();
+                    if (dr2.Read())
+                    {
+                        fraZkia = Convert.ToInt32(dr2["idFaktura"]);
+                    }
+                    dr2.Close();
+                    db2.conn.Close(); // Cerramos conexión manualmente
                 }
-                dr2.Close();
-                db2.conn.Close(); // Cerramos conexión manualmente
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Errorea faktura bilatzean: " + ex.Message);
-                return;
-            }
-
-            try
-            {
-                DBKonexioa db = new DBKonexioa();
-                db.konektatu();
-
-                string query = "SELECT totala FROM kontsumizioak WHERE IdFaktura=@fraZkia";
-                MySqlCommand cmd = new MySqlCommand(query, db.conn);
-                cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
-
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
+                catch (Exception ex)
                 {
-                    totala += Convert.ToSingle(dr["totala"]);
+                    MessageBox.Show("Errorea faktura bilatzean: " + ex.Message);
+                    return;
                 }
-                dr.Close();
-                db.conn.Close(); // Cerramos conexión manualmente
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Errorea totala kalkulatzean: " + ex.Message);
-                return;
-            }
 
-            if (fraZkia > 0)
-            {
-                KontrolKontsumizioak kk = new KontrolKontsumizioak();
-                kk.KontsumizioaErregistratu(fraZkia, totala);
+                try
+                {
+                    DBKonexioa db = new DBKonexioa();
+                    db.konektatu();
+
+                    string query = "SELECT totala, idProduktua, kopurua FROM kontsumizioak WHERE IdFaktura=@fraZkia";
+                    MySqlCommand cmd = new MySqlCommand(query, db.conn);
+                    cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
+
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        totala += Convert.ToSingle(dr["totala"]);
+                        int idProd = Convert.ToInt32(dr["idProduktua"]);
+                        int kop = Convert.ToInt32(dr["kopurua"]);
+                        KontrolProduktuak kk = new KontrolProduktuak();
+                        kk.StockAldaketa(idProd, kop);
+                    }
+                    dr.Close();
+                    db.conn.Close(); // Cerramos conexión manualmente
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Errorea totala kalkulatzean: " + ex.Message);
+                    return;
+                }
+
+                if (fraZkia > 0)
+                {
+                    KontrolProduktuak kk = new KontrolProduktuak();
+                    kk.KontsumizioaErregistratu(fraZkia, totala);
+                }
+                else
+                {
+                    MessageBox.Show("Ezin da faktura aurkitu.");
+                }
+                Menu menu = new Menu(idBazkidea);
+                menu.Show();
+                this.Close();
             }
-            else
-            {
-                MessageBox.Show("Ezin da faktura aurkitu.");
-            }
-            Menu menu = new Menu(idBazkidea);
-            menu.Show();
-            this.Close();
         }
 
         private void lbl_itxi_Click(object sender, EventArgs e)
@@ -160,7 +199,7 @@ namespace ElkarGune.Interfazeak
             int anchoTotal = dataGridView.Width;
 
             // Define el porcentaje para cada columna (por ejemplo, 30% para la primera columna, 50% para la segunda, etc.)
-            double[] porcentajes = { 0.50, 0.20, 0.10, 0.20 }; // Asegúrate de que la suma sea 1 o 100%
+            double[] porcentajes = {0, 0.50, 0.20, 0.10, 0.20 }; // Asegúrate de que la suma sea 1 o 100%
 
             // Ajusta la anchura de cada columna basado en los porcentajes
             for (int i = 0; i < dataGridView.Columns.Count; i++)
@@ -173,6 +212,26 @@ namespace ElkarGune.Interfazeak
             }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica que el índice de la fila sea válido (para evitar errores en el encabezado)
+            if (e.RowIndex >= 0)
+            {
+                // Obtiene la fila seleccionada
+                DataGridViewRow fila = dataGridView1.Rows[e.RowIndex];
 
+                // Obtener el valor de una celda por índice de columna
+                //string valorCelda = fila.Cells[0].Value?.ToString(); // Cambia 1 por el índice de la columna deseada
+                int idProduktua = Convert.ToInt32(fila.Cells[0].Value?.ToString());
+                // Obtener el valor de una celda por nombre de columna
+                //string idProduktua = fila.Cells["Produktua"].Value?.ToString(); // Cambia "NombreColumna" por el nombre real
+
+
+                KontrolProduktuak kk = new KontrolProduktuak();
+                kk.ProduktuaEzabatu(idProduktua, fraZkia);
+                this.KargatuDatuak();
+                
+            }
+        }
     }
 }

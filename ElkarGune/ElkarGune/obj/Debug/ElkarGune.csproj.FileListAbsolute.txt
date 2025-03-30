@@ -45,7 +45,6 @@ C:\Users\anere\OneDrive - Goierri Eskola\24-25\DATU BASEAK\3EB\C#\ElkarGune\Elka
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.csproj.AssemblyReference.cache
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Admin.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Login.resources
-C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Menu.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Properties.Resources.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.csproj.GenerateResource.cache
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.csproj.CoreCompileInputs.cache
@@ -92,3 +91,10 @@ C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarG
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Kopurua.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.Konfirmazioa.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.Fakturak.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.Abisuak.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.Mezuak.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.ErreserbaHistorikoa.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.ErreserbakMenua.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.ErreserbaKudeaketa.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.ErreserbakIkusi.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Menu.resources

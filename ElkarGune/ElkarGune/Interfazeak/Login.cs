@@ -14,6 +14,7 @@ namespace ElkarGune
 {
     public partial class Login : Form
     {
+        string erabIzena = "";
         public Login()
         {
             InitializeComponent();
@@ -51,13 +52,14 @@ namespace ElkarGune
                     if (dr.Read())
                     {
                         int idBazkidea = Convert.ToInt32(dr["IdBazkidea"]);
+                        erabIzena = (dr["izena"]).ToString();
                         bool isAdmin = dr["admin"] != DBNull.Value && Convert.ToInt32(dr["admin"]) == 1;
                         dr.Close(); // Cierra el DataReader antes de abrir otro formulario
 
                         this.Hide();
                         if (isAdmin)
                         {
-                            Admin admin = new Admin(idBazkidea, erabiltzailea);
+                            Admin admin = new Admin(idBazkidea, erabIzena);
                             admin.Show();
                         }
                         else

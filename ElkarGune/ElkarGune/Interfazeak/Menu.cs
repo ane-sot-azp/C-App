@@ -1,4 +1,5 @@
-﻿using Org.BouncyCastle.Crypto;
+﻿using ElkarGune.Interfazeak;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,11 +70,52 @@ namespace ElkarGune
         private void lbl_Kontsumizioak_Click(object sender, EventArgs e)
         {
             int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
-            KontrolKontsumizioak kk = new KontrolKontsumizioak();
+            KontrolProduktuak kk = new KontrolProduktuak();
             kk.FakturaSortu(idBazkidea);
             this.Close();
 
 
+        }
+
+        private void lbl_Erreserbak_Click(object sender, EventArgs e)
+        {
+            int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
+            ErreserbakMenua erreserbamenu = new ErreserbakMenua(idBazkidea);
+            erreserbamenu.Show();
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
+            Fakturak faktura = new Fakturak(idBazkidea);
+            faktura.Show();
+            this.Close();
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
+            Mezuak mezuak = new Mezuak(idBazkidea);
+            mezuak.Show();
+            this.Close();
+        }
+
+        private void lbl_Abisuak_Click(object sender, EventArgs e)
+        {
+            int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
+            Abisuak abisuak = new Abisuak(idBazkidea);
+            abisuak.Show();
+            this.Close();
+
+        }
+
+        private void lbl_ErresHist_Click(object sender, EventArgs e)
+        {
+            int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
+            ErreserbaHistorikoa erresHis = new ErreserbaHistorikoa(idBazkidea);
+            erresHis.Show();
+            this.Close();
         }
     }
 }
