@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,6 @@ namespace ElkarGune
         DateTime erreserbaData = DateTime.MinValue;
         DateTime gaur = DateTime.Today;
         DateTime fechaLimite = DateTime.Today.AddMonths(2);
-
         public ErreserbaKudeaketa()
         {
             InitializeComponent();
@@ -81,35 +81,44 @@ namespace ElkarGune
         }
         private void ErreserbaKoloreak()
         {
-            // First, reset all the labels' background to black
-            for (int i = 1; i < 22; i++)
-            {
-                Label label = this.Controls.Find("lbl_esp" + i, true).FirstOrDefault() as Label;
-                KoloreBeltza(label);
-            }
-
-            // Database connection
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
+            string select1 = "SELECT egoera FROM espazioa";
+            using (MySqlCommand cmd1 = new MySqlCommand(select1, db.conn))
+            using (MySqlDataReader reader1 = cmd1.ExecuteReader())
+            {
+                int i = 1; // Contador para asignar a los labels dinámicamente
+                while (reader1.Read() && i <= 21)  // Leer cada fila del resultado
+                {
+                    int egoera = Convert.ToInt32(reader1["egoera"]); // Obtener el valor de egoera
 
-            string select = "SELECT ee.idEspazioa, er.idBazkidea, e.izena " +
+                    Label label = this.Controls.Find("lbl_esp" + i, true).FirstOrDefault() as Label;
+                    if (label != null)
+                    {
+                        if (egoera != 0)
+                            KoloreBeltza(label);
+                        else
+                            KoloreGrisa(label);
+                    }
+
+                    i++; // Incrementar el contador para el siguiente label
+                }
+            }
+            string select = "SELECT e.egoera, ee.idEspazioa, er.idBazkidea, e.izena " +
                             "FROM espazioa e " +
                             "JOIN erreserbaelementua ee ON e.idEspazioa = ee.idEspazioa " +
                             "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
                             "WHERE er.mota = @mota AND er.data = @data";
 
-            // Prepare the command with parameters
             MySqlCommand cmd = new MySqlCommand(select, db.conn);
             cmd.Parameters.AddWithValue("@idBazk", idBazkidea);
             cmd.Parameters.AddWithValue("@mota", mota);
             cmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
 
-            // Execute the command and read the data
             MySqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
             {
-                // Check if the value is not DBNull and process the data
                 if (reader["idEspazioa"] != DBNull.Value)
                 {
                     int espazioZKia = Convert.ToInt32(reader["idEspazioa"]);
@@ -117,18 +126,17 @@ namespace ElkarGune
 
                     Label label = this.Controls.Find("lbl_esp" + espazioZKia, true).FirstOrDefault() as Label;
 
-                    // Change color based on the condition
                     if (rowIdBazkidea == idBazkidea)
                     {
-                        KoloreUrdina(label);  // Apply blue color
+                        KoloreUrdina(label);
                     }
                     else
                     {
-                        KoloreGorria(label);  // Apply red color
+                        KoloreGorria(label);
                     }
                 }
-            }
 
+            }
             // Close the database connection
             db.conn.Close();
         }
@@ -236,6 +244,19 @@ namespace ElkarGune
                 MessageBox.Show("Label is null");
             }
         }
+        public void KoloreGrisa(Label label)
+        {
+            if (label != null)
+            {
+                label.ForeColor = Color.FromArgb(255, 0, 0, 0);
+                label.BackColor = Color.FromArgb(50, 0, 0, 0);
+                label.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Label is null");
+            }
+        }
         public void LabelEbentoak()
         {
             for (int i = 1; i <= 21; i++)
@@ -251,66 +272,73 @@ namespace ElkarGune
         {
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
-
-            // Verificar si ya existe una reserva para esta mesa
-            string checkQuery = "SELECT COUNT(*) FROM erreserbaelementua ee " +
-                                "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
-                                "WHERE ee.idEspazioa = @idEspazioa AND er.idBazkidea = @idBazk AND er.mota = @mota AND er.data = @data";
-
-            MySqlCommand checkCmd = new MySqlCommand(checkQuery, db.conn);
-            checkCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
-            checkCmd.Parameters.AddWithValue("@idBazk", idBazkidea);
-            checkCmd.Parameters.AddWithValue("@mota", mota);
-            checkCmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
-
-            int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
-
-            if (exists > 0)
+            string select1 = "SELECT * FROM espazioa WHERE idEspazioa=@idEspazioa AND egoera=1";
+            MySqlCommand selectCmd = new MySqlCommand(select1, db.conn);
+            selectCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+            int egoera = Convert.ToInt32(selectCmd.ExecuteScalar());
+            if (egoera > 0)
             {
-                // Si existe, eliminar la reserva
-                string deleteQuery = "DELETE ee FROM erreserbaelementua ee " +
-                                     "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
-                                     "WHERE ee.idEspazioa = @idEspazioa AND er.idBazkidea = @idBazk AND er.mota = @mota AND er.data = @data";
+                // Verificar si ya existe una reserva para esta mesa
+                string checkQuery = "SELECT COUNT(*) FROM erreserbaelementua ee " +
+                                    "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
+                                    "WHERE ee.idEspazioa = @idEspazioa AND er.idBazkidea = @idBazk AND er.mota = @mota AND er.data = @data";
 
-                MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, db.conn);
-                deleteCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
-                deleteCmd.Parameters.AddWithValue("@idBazk", idBazkidea);
-                deleteCmd.Parameters.AddWithValue("@mota", mota);
-                deleteCmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
+                MySqlCommand checkCmd = new MySqlCommand(checkQuery, db.conn);
+                checkCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+                checkCmd.Parameters.AddWithValue("@idBazk", idBazkidea);
+                checkCmd.Parameters.AddWithValue("@mota", mota);
+                checkCmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
 
-                deleteCmd.ExecuteNonQuery();
-                KargatuDatuak(); // Volver al color original
-            }
-            else
-            {
-                string checkQuery1 = "SELECT COUNT(*) FROM erreserbaelementua ee " +
-                                "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
-                                "WHERE ee.idEspazioa = @idEspazioa AND er.mota = @mota AND er.data = @data";
+                int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
 
-                MySqlCommand checkCmd1 = new MySqlCommand(checkQuery1, db.conn);
-                checkCmd1.Parameters.AddWithValue("@idEspazioa", idEspazioa);
-                checkCmd1.Parameters.AddWithValue("@mota", mota);
-                checkCmd1.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
-
-                int exists1 = Convert.ToInt32(checkCmd1.ExecuteScalar());
-                if (exists1 > 0)
+                if (exists > 0)
                 {
-                    MessageBox.Show("Dagoeneko beste bazkide batek erreserbatu du!");
+                    // Si existe, eliminar la reserva
+                    string deleteQuery = "DELETE ee FROM erreserbaelementua ee " +
+                                         "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
+                                         "WHERE ee.idEspazioa = @idEspazioa AND er.idBazkidea = @idBazk AND er.mota = @mota AND er.data = @data";
+
+                    MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, db.conn);
+                    deleteCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+                    deleteCmd.Parameters.AddWithValue("@idBazk", idBazkidea);
+                    deleteCmd.Parameters.AddWithValue("@mota", mota);
+                    deleteCmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
+
+                    deleteCmd.ExecuteNonQuery();
                 }
                 else
                 {
-                    // Si no existe, insertar una nueva reserva
-                    string insertQuery = "INSERT INTO erreserbaelementua (idErreserba, idEspazioa) VALUES (@idErreserba, @idEspazioa)";
+                    string checkQuery1 = "SELECT COUNT(*) FROM erreserbaelementua ee " +
+                                    "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
+                                    "WHERE ee.idEspazioa = @idEspazioa AND er.mota = @mota AND er.data = @data";
 
-                    MySqlCommand insertCmd = new MySqlCommand(insertQuery, db.conn);
-                    insertCmd.Parameters.AddWithValue("@idErreserba", ErreserbaIdLortu());
-                    insertCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+                    MySqlCommand checkCmd1 = new MySqlCommand(checkQuery1, db.conn);
+                    checkCmd1.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+                    checkCmd1.Parameters.AddWithValue("@mota", mota);
+                    checkCmd1.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
 
-                    insertCmd.ExecuteNonQuery();
-                    KargatuDatuak(); // Cambiar color a azul
+                    int exists1 = Convert.ToInt32(checkCmd1.ExecuteScalar());
+                    if (exists1 > 0)
+                    {
+                        MessageBox.Show("Dagoeneko beste bazkide batek erreserbatu du!");
+                    }
+                    else
+                    {
+                        // Si no existe, insertar una nueva reserva
+                        string insertQuery = "INSERT INTO erreserbaelementua (idErreserba, idEspazioa) VALUES (@idErreserba, @idEspazioa)";
+
+                        MySqlCommand insertCmd = new MySqlCommand(insertQuery, db.conn);
+                        insertCmd.Parameters.AddWithValue("@idErreserba", ErreserbaIdLortu());
+                        insertCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+
+                        insertCmd.ExecuteNonQuery();
+                    }
                 }
             }
-
+            else
+            {
+                MessageBox.Show("Elementu hau ez dago erabilgarri");
+            }
             db.conn.Close();
             KargatuDatuak(); // Recargar datos
         }

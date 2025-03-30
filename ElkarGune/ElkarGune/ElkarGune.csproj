@@ -122,6 +122,14 @@
     <Compile Include="Interfazeak\Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Klaseak\Abisuak.cs" />
+    <Compile Include="Klaseak\Erreserba.cs" />
+    <Compile Include="Klaseak\ErreserbaElementua.cs" />
+    <Compile Include="Klaseak\Espazioa.cs" />
+    <Compile Include="Klaseak\Fakturak.cs" />
+    <Compile Include="Klaseak\Kontsumizioak.cs" />
+    <Compile Include="Klaseak\Mezuak.cs" />
+    <Compile Include="Klaseak\Produktua.cs" />
     <Compile Include="Kontrolak\DBKonexioa.cs" />
     <Compile Include="Interfazeak\ErreserbaHistorikoa.cs">
       <SubType>Form</SubType>
@@ -276,9 +284,7 @@
   <ItemGroup>
     <None Include="Resources\KOPURUAK.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Klaseak\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\FONDOAK_5.png" />
   </ItemGroup>
