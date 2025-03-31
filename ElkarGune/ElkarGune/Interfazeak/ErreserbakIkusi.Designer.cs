@@ -63,32 +63,32 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Frak.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_Frak.GridColor = System.Drawing.SystemColors.Control;
-            this.dgv_Frak.Location = new System.Drawing.Point(329, 110);
-            this.dgv_Frak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgv_Frak.Location = new System.Drawing.Point(244, 90);
+            this.dgv_Frak.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgv_Frak.Name = "dgv_Frak";
             this.dgv_Frak.RowHeadersWidth = 51;
             this.dgv_Frak.RowTemplate.Height = 24;
-            this.dgv_Frak.Size = new System.Drawing.Size(1368, 629);
+            this.dgv_Frak.Size = new System.Drawing.Size(1036, 509);
             this.dgv_Frak.TabIndex = 69;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label1.Location = new System.Drawing.Point(1809, 624);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(1356, 496);
+            //this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 129);
+            this.label1.Size = new System.Drawing.Size(122, 133);
             this.label1.TabIndex = 68;
             // 
             // lbl_itxi
             // 
             this.lbl_itxi.BackColor = System.Drawing.Color.Transparent;
             this.lbl_itxi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_itxi.Location = new System.Drawing.Point(1928, 17);
-            this.lbl_itxi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_itxi.Location = new System.Drawing.Point(1449, 19);
+            //this.lbl_itxi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_itxi.Name = "lbl_itxi";
-            this.lbl_itxi.Size = new System.Drawing.Size(77, 71);
+            this.lbl_itxi.Size = new System.Drawing.Size(51, 51);
             this.lbl_itxi.TabIndex = 67;
             this.lbl_itxi.Click += new System.EventHandler(this.lbl_itxi_Click);
             // 
@@ -96,26 +96,26 @@
             // 
             this.lbl_Atzera.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_Atzera.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lbl_Atzera.Location = new System.Drawing.Point(17, 17);
-            this.lbl_Atzera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Atzera.Location = new System.Drawing.Point(12, 11);
+            //this.lbl_Atzera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Atzera.Name = "lbl_Atzera";
-            this.lbl_Atzera.Size = new System.Drawing.Size(227, 87);
+            this.lbl_Atzera.Size = new System.Drawing.Size(169, 78);
             this.lbl_Atzera.TabIndex = 66;
             // 
             // ErreserbakIkusi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ElkarGune.Properties.Resources.FONDOAK_5;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1924, 857);
+            this.ClientSize = new System.Drawing.Size(1522, 696);
             this.Controls.Add(this.dgv_Frak);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_itxi);
             this.Controls.Add(this.lbl_Atzera);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            //this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ErreserbakIkusi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Erreserbak Ikusi";
