@@ -13,21 +13,21 @@ using System.Windows.Forms;
 
 namespace ElkarGune
 {
-    public partial class Kontsumizioak : Form
+    public partial class KontsumizioakAukeratu : Form
     {
         public virtual int idBazk { get; set; }
         private int fraZkia;
-        public Kontsumizioak()
+        public KontsumizioakAukeratu()
         {
             InitializeComponent();
         }
-        public Kontsumizioak(int idBazkidea)
+        public KontsumizioakAukeratu(int idBazkidea)
         {
             InitializeComponent();
             idBazk = idBazkidea;
             label1.Text=idBazk.ToString();
         }
-        public Kontsumizioak(int idBazkidea, int fraZenbakia)
+        public KontsumizioakAukeratu(int idBazkidea, int fraZenbakia)
         {
             InitializeComponent();
              idBazk = idBazkidea;

@@ -71,7 +71,7 @@ namespace ElkarGune
         {
             int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
             KontrolProduktuak kk = new KontrolProduktuak();
-            kk.FakturaSortu(idBazkidea);
+            kk.SartuFaktura(idBazkidea);
             this.Close();
 
 
@@ -88,7 +88,7 @@ namespace ElkarGune
         private void label1_Click(object sender, EventArgs e)
         {
             int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
-            Fakturak faktura = new Fakturak(idBazkidea);
+            FakturakIkusi faktura = new FakturakIkusi(idBazkidea);
             faktura.Show();
             this.Close();
         }
@@ -96,7 +96,7 @@ namespace ElkarGune
         private void label1_Click_1(object sender, EventArgs e)
         {
             int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
-            Mezuak mezuak = new Mezuak(idBazkidea);
+            MezuakIkusi mezuak = new MezuakIkusi(idBazkidea);
             mezuak.Show();
             this.Close();
         }
@@ -104,7 +104,7 @@ namespace ElkarGune
         private void lbl_Abisuak_Click(object sender, EventArgs e)
         {
             int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
-            Abisuak abisuak = new Abisuak(idBazkidea);
+            AbisuaIkusi abisuak = new AbisuaIkusi(idBazkidea);
             abisuak.Show();
             this.Close();
 

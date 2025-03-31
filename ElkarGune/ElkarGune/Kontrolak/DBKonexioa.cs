@@ -7,21 +7,21 @@ namespace ElkarGune
     class DBKonexioa : IDisposable
     {
         //Local
-        public virtual string Servidor { get; set; } = "localhost";
-        public virtual string Puerto { get; set; } = "3306";
-        public virtual string Usuario { get; set; } = "root";
-        public virtual string Contraseña { get; set; } = "1MG2024";
-        public virtual string BaseDeDatos { get; set; } = "elkargune";
-        public virtual string SslMode { get; set; } = "None";
+        //public virtual string Servidor { get; set; } = "localhost";
+        //public virtual string Puerto { get; set; } = "3306";
+        //public virtual string Usuario { get; set; } = "root";
+        //public virtual string Contraseña { get; set; } = "1MG2024";
+        //public virtual string BaseDeDatos { get; set; } = "elkargune";
+        //public virtual string SslMode { get; set; } = "None";
 
         //Serbidorea
 
-        //public virtual string Servidor { get; set; } = "172.16.237.119";
-        //public virtual string Puerto { get; set; } = "3306";
-        //public virtual string Usuario { get; set; } = "java";
-        //public virtual string Contraseña { get; set; } = "1mg3";
-        //public virtual string BaseDeDatos { get; set; } = "elkargune";
-        //public virtual string SslMode { get; set; } = "None";
+        public virtual string Servidor { get; set; } = "172.16.237.119";
+        public virtual string Puerto { get; set; } = "3306";
+        public virtual string Usuario { get; set; } = "java";
+        public virtual string Contraseña { get; set; } = "1mg3";
+        public virtual string BaseDeDatos { get; set; } = "elkargune";
+        public virtual string SslMode { get; set; } = "None";
 
         // MySqlConnection instantzia
         public MySqlConnection conn;

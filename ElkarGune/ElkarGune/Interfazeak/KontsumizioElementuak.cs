@@ -39,10 +39,11 @@ namespace ElkarGune
             db.konektatu();
 
             int idPM = idProduktuMota;
-            string query = "SELECT idProduktua, irudia FROM produktua WHERE idProduktuMota=" + idPM;
+            string query = "SELECT idProduktua, irudia FROM produktua WHERE idProduktuMota= @idPM";
 
             // Crea el comando para la consulta
             MySqlCommand cmd = new MySqlCommand();
+            cmd.Parameters.AddWithValue("@idPM", idPM);
             cmd.Connection = db.conn;
             cmd.CommandText = query;
 

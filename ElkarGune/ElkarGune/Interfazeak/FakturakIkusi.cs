@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ElkarGune.Kontrolak;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,42 +12,40 @@ using System.Windows.Forms;
 
 namespace ElkarGune.Interfazeak
 {
-    public partial class Abisuak: Form
+    public partial class FakturakIkusi : Form
     {
         int idBazkidea = 0;
-        public Abisuak()
+        public FakturakIkusi()
         {
             InitializeComponent();
             KargatuDatuak();
         }
-        public Abisuak(int idBazk)
+        public FakturakIkusi(int idBazk)
         {
             InitializeComponent();
-            idBazkidea=idBazk;
+            idBazkidea = idBazk;
             KargatuDatuak();
         }
+
         private void KargatuDatuak()
         {
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
-
-            string select = "SELECT data AS 'Data', mezua AS 'Mezua'FROM abisuak";
-            MySqlCommand cmd = new MySqlCommand(select, db.conn);
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
+            KontrolAdmin ka = new KontrolAdmin();
+            DataTable dt = ka.FakturakIkusi(idBazkidea);
             dgv_Frak.DataSource = dt;
-
-            db.conn.Close();
         }
 
         private void lbl_itxi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_itxi_Click_1(object sender, EventArgs e)
         {
             Menu menu = new Menu(idBazkidea);
             menu.Show();
             this.Close();
         }
+
+
     }
 }

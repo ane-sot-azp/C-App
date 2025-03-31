@@ -98,11 +98,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfazeak\Abisuak.cs">
+    <Compile Include="Interfazeak\AbisuaIkusi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfazeak\Abisuak.Designer.cs">
-      <DependentUpon>Abisuak.cs</DependentUpon>
+    <Compile Include="Interfazeak\AbisuaIkusi.Designer.cs">
+      <DependentUpon>AbisuaIkusi.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfazeak\ErreserbakIkusi.cs">
       <SubType>Form</SubType>
@@ -143,11 +143,11 @@
     <Compile Include="Interfazeak\ErreserbakMenua.Designer.cs">
       <DependentUpon>ErreserbakMenua.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfazeak\Fakturak.cs">
+    <Compile Include="Interfazeak\FakturakIkusi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfazeak\Fakturak.Designer.cs">
-      <DependentUpon>Fakturak.cs</DependentUpon>
+    <Compile Include="Interfazeak\FakturakIkusi.Designer.cs">
+      <DependentUpon>FakturakIkusi.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfazeak\Konfirmazioa.cs">
       <SubType>Form</SubType>
@@ -155,21 +155,21 @@
     <Compile Include="Interfazeak\Konfirmazioa.Designer.cs">
       <DependentUpon>Konfirmazioa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfazeak\Mezuak.cs">
+    <Compile Include="Interfazeak\MezuakIkusi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfazeak\Mezuak.Designer.cs">
-      <DependentUpon>Mezuak.cs</DependentUpon>
+    <Compile Include="Interfazeak\MezuakIkusi.Designer.cs">
+      <DependentUpon>MezuakIkusi.cs</DependentUpon>
     </Compile>
     <Compile Include="Kontrolak\KontrolAdmin.cs" />
     <Compile Include="Kontrolak\KontrolErreserbak.cs" />
     <Compile Include="Kontrolak\KontrolMezuak.cs" />
     <Compile Include="Kontrolak\KontrolProduktuak.cs" />
-    <Compile Include="Interfazeak\Kontsumizioak.cs">
+    <Compile Include="Interfazeak\KontsumizioakAukeratu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interfazeak\Kontsumizioak.Designer.cs">
-      <DependentUpon>Kontsumizioak.cs</DependentUpon>
+    <Compile Include="Interfazeak\KontsumizioakAukeratu.Designer.cs">
+      <DependentUpon>KontsumizioakAukeratu.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfazeak\KontsumizioElementuak.cs">
       <SubType>Form</SubType>
@@ -197,8 +197,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Interfazeak\Abisuak.resx">
-      <DependentUpon>Abisuak.cs</DependentUpon>
+    <EmbeddedResource Include="Interfazeak\AbisuaIkusi.resx">
+      <DependentUpon>AbisuaIkusi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfazeak\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
@@ -215,14 +215,14 @@
     <EmbeddedResource Include="Interfazeak\ErreserbaHistorikoa.resx">
       <DependentUpon>ErreserbaHistorikoa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfazeak\Fakturak.resx">
-      <DependentUpon>Fakturak.cs</DependentUpon>
+    <EmbeddedResource Include="Interfazeak\FakturakIkusi.resx">
+      <DependentUpon>FakturakIkusi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfazeak\Konfirmazioa.resx">
       <DependentUpon>Konfirmazioa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfazeak\Kontsumizioak.resx">
-      <DependentUpon>Kontsumizioak.cs</DependentUpon>
+    <EmbeddedResource Include="Interfazeak\KontsumizioakAukeratu.resx">
+      <DependentUpon>KontsumizioakAukeratu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfazeak\KontsumizioElementuak.resx">
       <DependentUpon>KontsumizioElementuak.cs</DependentUpon>
@@ -236,8 +236,8 @@
     <EmbeddedResource Include="Interfazeak\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interfazeak\Mezuak.resx">
-      <DependentUpon>Mezuak.cs</DependentUpon>
+    <EmbeddedResource Include="Interfazeak\MezuakIkusi.resx">
+      <DependentUpon>MezuakIkusi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

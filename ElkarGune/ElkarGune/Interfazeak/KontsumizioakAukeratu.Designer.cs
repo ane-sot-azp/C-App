@@ -1,6 +1,6 @@
 ﻿namespace ElkarGune
 {
-    partial class Kontsumizioak
+    partial class KontsumizioakAukeratu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kontsumizioak));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KontsumizioakAukeratu));
             this.lbl_SaioaItxiKontsumizioak = new System.Windows.Forms.Label();
             this.lbl_ItxiMenu = new System.Windows.Forms.Label();
             this.lbl_Ardoak = new System.Windows.Forms.Label();
@@ -55,9 +55,9 @@
             // 
             this.lbl_ItxiMenu.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ItxiMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_ItxiMenu.Location = new System.Drawing.Point(1084, 13);
+            this.lbl_ItxiMenu.Location = new System.Drawing.Point(1449, 20);
             this.lbl_ItxiMenu.Name = "lbl_ItxiMenu";
-            this.lbl_ItxiMenu.Size = new System.Drawing.Size(44, 47);
+            this.lbl_ItxiMenu.Size = new System.Drawing.Size(52, 48);
             this.lbl_ItxiMenu.TabIndex = 9;
             this.lbl_ItxiMenu.Click += new System.EventHandler(this.lbl_ItxiMenu_Click);
             // 
@@ -171,7 +171,7 @@
             this.Controls.Add(this.lbl_SaioaItxiKontsumizioak);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Kontsumizioak";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kontsumizioak";

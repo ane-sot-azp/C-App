@@ -1,6 +1,6 @@
 ﻿namespace ElkarGune.Interfazeak
 {
-    partial class Abisuak
+    partial class FakturakIkusi
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,41 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgv_Frak = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FakturakIkusi));
             this.lbl_itxi = new System.Windows.Forms.Label();
             this.lbl_Atzera = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgv_Frak = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Frak)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lbl_itxi
+            // 
+            this.lbl_itxi.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_itxi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_itxi.Location = new System.Drawing.Point(1449, 19);
+            this.lbl_itxi.Name = "lbl_itxi";
+            this.lbl_itxi.Size = new System.Drawing.Size(51, 51);
+            this.lbl_itxi.TabIndex = 59;
+            this.lbl_itxi.Click += new System.EventHandler(this.lbl_itxi_Click_1);
+            // 
+            // lbl_Atzera
+            // 
+            this.lbl_Atzera.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_Atzera.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lbl_Atzera.Location = new System.Drawing.Point(12, 11);
+            this.lbl_Atzera.Name = "lbl_Atzera";
+            this.lbl_Atzera.Size = new System.Drawing.Size(169, 78);
+            this.lbl_Atzera.TabIndex = 58;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label1.Location = new System.Drawing.Point(1356, 496);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 133);
+            this.label1.TabIndex = 60;
             // 
             // dgv_Frak
             // 
@@ -53,43 +82,15 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Frak.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Frak.GridColor = System.Drawing.SystemColors.Control;
-            this.dgv_Frak.Location = new System.Drawing.Point(246, 88);
-            this.dgv_Frak.Margin = new System.Windows.Forms.Padding(2);
+            this.dgv_Frak.Location = new System.Drawing.Point(244, 90);
+            this.dgv_Frak.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgv_Frak.Name = "dgv_Frak";
             this.dgv_Frak.RowHeadersWidth = 51;
             this.dgv_Frak.RowTemplate.Height = 24;
-            this.dgv_Frak.Size = new System.Drawing.Size(1026, 511);
-            this.dgv_Frak.TabIndex = 65;
+            this.dgv_Frak.Size = new System.Drawing.Size(1036, 509);
+            this.dgv_Frak.TabIndex = 61;
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label1.Location = new System.Drawing.Point(1356, 506);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 108);
-            this.label1.TabIndex = 64;
-            // 
-            // lbl_itxi
-            // 
-            this.lbl_itxi.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_itxi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_itxi.Location = new System.Drawing.Point(1445, 13);
-            this.lbl_itxi.Name = "lbl_itxi";
-            this.lbl_itxi.Size = new System.Drawing.Size(65, 61);
-            this.lbl_itxi.TabIndex = 63;
-            this.lbl_itxi.Click += new System.EventHandler(this.lbl_itxi_Click);
-            // 
-            // lbl_Atzera
-            // 
-            this.lbl_Atzera.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl_Atzera.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.lbl_Atzera.Location = new System.Drawing.Point(12, 13);
-            this.lbl_Atzera.Name = "lbl_Atzera";
-            this.lbl_Atzera.Size = new System.Drawing.Size(170, 71);
-            this.lbl_Atzera.TabIndex = 62;
-            // 
-            // Abisuak
+            // Fakturak
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,9 +102,11 @@
             this.Controls.Add(this.lbl_itxi);
             this.Controls.Add(this.lbl_Atzera);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Abisuak";
-            this.Text = "Abisuak";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "Fakturak";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Fakturak";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Frak)).EndInit();
             this.ResumeLayout(false);
 
@@ -111,9 +114,9 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgv_Frak;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_itxi;
         private System.Windows.Forms.Label lbl_Atzera;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgv_Frak;
     }
 }

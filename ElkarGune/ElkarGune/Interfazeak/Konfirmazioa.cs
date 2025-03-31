@@ -90,7 +90,7 @@ namespace ElkarGune.Interfazeak
         private void lbl_Atzera_Click(object sender, EventArgs e)
         {
             //int idBazkidea = Convert.ToInt32(label1.Text);
-            Kontsumizioak kontsumizioak = new Kontsumizioak(idBazkidea, fraZkia);
+            KontsumizioakAukeratu kontsumizioak = new KontsumizioakAukeratu(idBazkidea, fraZkia);
             kontsumizioak.Show();
             this.Close();
         }
@@ -148,7 +148,7 @@ namespace ElkarGune.Interfazeak
                         int idProd = Convert.ToInt32(dr["idProduktua"]);
                         int kop = Convert.ToInt32(dr["kopurua"]);
                         KontrolProduktuak kk = new KontrolProduktuak();
-                        kk.StockAldaketa(idProd, kop);
+                        kk.EguneratuProduktua(idProd, kop);
                     }
                     dr.Close();
                     db.conn.Close(); // Cerramos conexión manualmente
@@ -162,7 +162,7 @@ namespace ElkarGune.Interfazeak
                 if (fraZkia > 0)
                 {
                     KontrolProduktuak kk = new KontrolProduktuak();
-                    kk.KontsumizioaErregistratu(fraZkia, totala);
+                    kk.EguneratuFaktura(fraZkia, totala);
                 }
                 else
                 {
@@ -228,7 +228,7 @@ namespace ElkarGune.Interfazeak
 
 
                 KontrolProduktuak kk = new KontrolProduktuak();
-                kk.ProduktuaEzabatu(idProduktua, fraZkia);
+                kk.EzabatuKontsumizioa(idProduktua, fraZkia);
                 this.KargatuDatuak();
                 
             }

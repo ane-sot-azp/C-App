@@ -229,7 +229,7 @@ namespace ElkarGune
                 {
                     int fraZkia = Convert.ToInt32(dr["idFaktura"]);
                     //MessageBox.Show("Produktua: " + idProduktua + " Kopurua: " + kopurua + " FraZkia: " + fraZkia);
-                    kk.Txertatu(idProduktua, kopurua, fraZkia, prezioa);
+                    kk.SartuKontsumizioa(idProduktua, kopurua, fraZkia, prezioa);
                 }
                 else
                 {

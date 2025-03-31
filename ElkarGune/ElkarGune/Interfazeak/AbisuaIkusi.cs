@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ElkarGune.Kontrolak;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,24 +12,24 @@ using System.Windows.Forms;
 
 namespace ElkarGune.Interfazeak
 {
-    public partial class ErreserbaHistorikoa : Form
+    public partial class AbisuaIkusi: Form
     {
         int idBazkidea = 0;
-        DateTime data = DateTime.Today;
-        public ErreserbaHistorikoa()
+        public AbisuaIkusi()
         {
             InitializeComponent();
+            KargatuDatuak();
         }
-        public ErreserbaHistorikoa(int idBazk)
+        public AbisuaIkusi(int idBazk)
         {
-            idBazkidea = idBazk;
             InitializeComponent();
-            HistorikoaIkusi();
+            idBazkidea=idBazk;
+            KargatuDatuak();
         }
-        private void HistorikoaIkusi()
+        private void KargatuDatuak()
         {
-            KontrolErreserbak ke = new KontrolErreserbak();
-            DataTable dt = ke.ErreserbaIkusi(data);
+            KontrolMezuak km = new KontrolMezuak();
+            DataTable dt = km.AbisuakIkusi();
             dgv_Frak.DataSource = dt;
         }
 
