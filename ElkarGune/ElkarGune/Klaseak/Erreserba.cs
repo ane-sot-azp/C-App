@@ -75,7 +75,7 @@ namespace ElkarGune.Klaseak
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
 
-            string select = "SELECT CONCAT(b.izena, ' ' , b.abizenak) AS 'Bazkidea', e.idErreserba AS 'Erreserba zenbakia', e. data AS 'Data', CASE e.mota WHEN 1 THEN 'Bazkaria' WHEN 2 THEN 'Afaria' END AS 'Mota' FROM erreserba e JOIN bazkidea b ON e.idBazkidea = b.idBazkidea WHERE e.idBazkidea = @idBazk AND e.data<@data ORDER BY data DESC";
+            string select = "SELECT e.idErreserba AS 'Erreserba zenbakia', e. data AS 'Data', CASE e.mota WHEN 1 THEN 'Bazkaria' WHEN 2 THEN 'Afaria' END AS 'Mota' FROM erreserba e JOIN bazkidea b ON e.idBazkidea = b.idBazkidea WHERE e.idBazkidea = @idBazk AND e.data<@data ORDER BY data DESC";
 
             MySqlCommand cmd = new MySqlCommand(select, db.conn);
             cmd.Parameters.AddWithValue("@idBazk", idBazkidea);

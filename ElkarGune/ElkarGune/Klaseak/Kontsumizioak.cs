@@ -63,7 +63,7 @@ namespace ElkarGune.Klaseak
                         if (erantzuna == DialogResult.Yes)
                         {
                             // UPDATE porque ya existe el producto en la factura
-                            string update = "UPDATE kontsumizioak SET kopurua = kopurua + @kop WHERE idProduktua = @idProd AND IdFaktura = @fakt";
+                            string update = "UPDATE kontsumizioak SET kopurua = kopurua + @kop, totala = kopurua * prezioa WHERE idProduktua = @idProd AND IdFaktura = @fakt";
                             MySqlCommand cmd = new MySqlCommand(update, db.conn, tr);
                             cmd.Parameters.AddWithValue("@kop", kop);
                             cmd.Parameters.AddWithValue("@idProd", idProd);

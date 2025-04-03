@@ -103,6 +103,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Mezuak";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mezuak";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Frak)).EndInit();
             this.ResumeLayout(false);

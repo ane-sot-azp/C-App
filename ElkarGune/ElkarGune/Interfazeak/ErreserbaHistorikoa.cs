@@ -28,7 +28,7 @@ namespace ElkarGune.Interfazeak
         private void HistorikoaIkusi()
         {
             KontrolErreserbak ke = new KontrolErreserbak();
-            DataTable dt = ke.ErreserbaIkusi(data);
+            DataTable dt = ke.HistorikoaIkusi(idBazkidea, data);
             dgv_Frak.DataSource = dt;
         }
 
@@ -38,5 +38,6 @@ namespace ElkarGune.Interfazeak
             menu.Show();
             this.Close();
         }
+
     }
 }

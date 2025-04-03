@@ -98,3 +98,7 @@ C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarG
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.MezuakIkusi.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.Interfazeak.FakturakIkusi.resources
 C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.KontsumizioakAukeratu.resources
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\bin\Debug\ElkarGune.exe.manifest
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\bin\Debug\ElkarGune.application
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.exe.manifest
+C:\Users\anere\OneDrive - Goierri Eskola\Escritorio\C#App\C-App\ElkarGune\ElkarGune\obj\Debug\ElkarGune.application

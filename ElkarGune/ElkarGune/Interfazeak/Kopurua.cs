@@ -49,7 +49,7 @@ namespace ElkarGune
 
                 String izena = dr["izena"].ToString();
                 prezioa = Convert.ToSingle(dr["salmentaPrezioa"]);
-                string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Resources");
+                string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
                 String imageUrl = dr["irudia"].ToString();
 
                 if (!string.IsNullOrEmpty(imageUrl))
@@ -243,5 +243,7 @@ namespace ElkarGune
         {
             this.Close();
         }
+
+        
     }
 }

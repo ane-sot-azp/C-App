@@ -51,7 +51,7 @@ namespace ElkarGune
             MySqlDataReader dr = cmd.ExecuteReader();
 
             int index = 1;
-            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Resources");
+            string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
             while (dr.Read() && index <= 12)
             {
                 // Crea un DataTable y carga los resultados

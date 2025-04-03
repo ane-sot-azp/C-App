@@ -45,7 +45,7 @@ namespace ElkarGune
         }
         private void Label_Click(object sender, EventArgs e)
         {
-            if (erreserbaData != DateTime.MinValue && mota != 0)
+            if (erreserbaData != DateTime.MinValue && (mota == 0 || mota == 1))
             {
                 Label label = sender as Label;
                 if (label != null)
@@ -115,12 +115,20 @@ namespace ElkarGune
         {
             mota = 1;
             label3.Text = mota.ToString();
+            lbl_bazkaria.BackColor = Color.FromArgb(50, 141, 115, 26);
+            lbl_afaria.BackColor = Color.Transparent;
+            lbl_afaria.Refresh();
+            lbl_bazkaria.Refresh();
             ErreEleIkusi();
         }
         private void lbl_afaria_Click(object sender, EventArgs e)
         {
             mota = 0;
             label3.Text = mota.ToString();
+            lbl_afaria.BackColor = Color.FromArgb(50, 141, 115, 26);
+            lbl_bazkaria.BackColor = Color.Transparent;
+            lbl_afaria.Refresh();
+            lbl_bazkaria.Refresh();
             ErreEleIkusi();
 
         }
@@ -191,7 +199,7 @@ namespace ElkarGune
             }
             // Close the database connection
             db.conn.Close();
-        }    
+        }
         public void KoloreGorria(Label label)
         {
             if (label != null)
@@ -349,7 +357,7 @@ namespace ElkarGune
             }
             KontrolErreserbak ke = new KontrolErreserbak();
             return ke.ErreserbaSartu(idBazkidea, mota, erreserbaData);
-            
+
         }
         public void lbl_erreserbatu_Click(object sender, EventArgs e)
         {
@@ -391,7 +399,7 @@ namespace ElkarGune
                 {
                     KontrolErreserbak ke = new KontrolErreserbak();
                     ke.ErreserbaEzabatu(idErreserba);
-                    
+
                     ErreEleIkusi(); // Volver al color original
                     DialogResult erantzuna2 = MessageBox.Show("Beste erreserba bat egin nahi duzu?",
                                          "Erreserba berria?",
@@ -410,7 +418,7 @@ namespace ElkarGune
         public void Erreserbatu()
         {
             KontrolErreserbak ke = new KontrolErreserbak();
-            
+
             DBKonexioa db = new DBKonexioa();
             db.konektatu();
 
@@ -429,7 +437,7 @@ namespace ElkarGune
                 int idErreserba = ErreserbaIdLortu(idBazkidea, mota, erreserbaData);
 
                 ke.ErreserbaEguneratu(idErreserba);
-                
+
                 ErreserbakMenua erreserbakMenua = new ErreserbakMenua(idBazkidea);
                 erreserbakMenua.Show();
                 this.Close();
