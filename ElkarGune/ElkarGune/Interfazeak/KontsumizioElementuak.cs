@@ -33,33 +33,17 @@ namespace ElkarGune
                     ((PictureBox)pic).Click += PictureBox_Click;
                 }
             }
-
-            // Establece la conexión a la base de datos
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
-
-            int idPM = idProduktuMota;
-            string query = "SELECT idProduktua, irudia FROM produktua WHERE idProduktuMota= @idPM";
-
-            // Crea el comando para la consulta
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Parameters.AddWithValue("@idPM", idPM);
-            cmd.Connection = db.conn;
-            cmd.CommandText = query;
-
+            KontrolProduktuak kp = new KontrolProduktuak();
             // Ejecuta la consulta y obtiene los resultados
-            MySqlDataReader dr = cmd.ExecuteReader();
+            MySqlDataReader dr = kp.ProduktuakIkusi(idProduktuMota);
 
             int index = 1;
             string basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
             while (dr.Read() && index <= 12)
             {
                 // Crea un DataTable y carga los resultados
-
                 String imageUrl = dr["irudia"].ToString();
                 int idProduktua = Convert.ToInt32(dr["idProduktua"]);
-
-
                 if (!string.IsNullOrEmpty(imageUrl))
                 {
                     try
@@ -89,13 +73,7 @@ namespace ElkarGune
 
             // Cierra el lector y la conexión
             dr.Close();
-            db.conn.Close();
-
         }
-
-
-
-
         private void lbl_ItxiMenu_Click(object sender, EventArgs e)
         {
             this.Close();

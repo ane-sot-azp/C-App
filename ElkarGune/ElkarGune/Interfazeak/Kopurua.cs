@@ -17,11 +17,12 @@ namespace ElkarGune
     {
         private float prezioa;
         private int idBazk;
+        int idProdutkua;
 
         public Kopurua(int idProduktua, int idBazkidea)
         {
             InitializeComponent();
-            int idProdutkua = idProduktua;
+            idProdutkua = idProduktua;
             idBazk = idBazkidea;
             idProd.Text = idProdutkua.ToString();
         }
@@ -29,18 +30,10 @@ namespace ElkarGune
         private void Kopurua_Load(object sender, EventArgs e)
         {
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
-            int idProduktua = Convert.ToInt32(idProd.Text);
-            string query = "SELECT * FROM produktua WHERE idProduktua=" + idProduktua;
-
-            // Crea el comando para la consulta
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = db.conn;
-            cmd.CommandText = query;
-
+            
+            KontrolProduktuak kp = new KontrolProduktuak();
             // Ejecuta la consulta y obtiene los resultados
-            MySqlDataReader dr = cmd.ExecuteReader();
+            MySqlDataReader dr = kp.ProduktuaKop(idProdutkua);
 
             int index = 1;
             if (dr.Read())
@@ -213,18 +206,8 @@ namespace ElkarGune
             {
 
                 int kopurua = Convert.ToInt32(lbl_kopurua.Text);
-                DBKonexioa db = new DBKonexioa();
-                db.konektatu();
-
-                string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = db.conn;
-                cmd.CommandText = select;
-                cmd.Parameters.AddWithValue("@idBazkidea", idBazk);
-                cmd.Parameters.AddWithValue("@data", data.ToString("yyyy-MM-dd"));
-
-
-                MySqlDataReader dr = cmd.ExecuteReader();
+                
+                MySqlDataReader dr = kk.KontsFakturaBilatu(idBazk, data);
                 if (dr.Read())
                 {
                     int fraZkia = Convert.ToInt32(dr["idFaktura"]);

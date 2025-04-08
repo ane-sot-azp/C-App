@@ -130,5 +130,34 @@ namespace ElkarGune.Klaseak
                 }
             }
         }
+        public MySqlDataAdapter KontsumizioZerrenda(int fraZkia){
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string select = "SELECT k.idProduktua, b.izena AS 'Produktua', k.prezioa AS 'Prezioa', k.kopurua AS 'Kopurua', k.totala AS 'Totala' FROM produktua b JOIN kontsumizioak k ON b.idProduktua=k.idProduktua WHERE k.IdFaktura = @fraZkia";
+            MySqlCommand cmd = new MySqlCommand(select, db.conn);
+            cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
+            return new MySqlDataAdapter(cmd);
+        }
+        public MySqlDataAdapter KargatuDatuak(int fraZkia){
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string select = "SELECT k.idProduktua, b.izena AS 'Produktua', k.prezioa AS 'Prezioa', k.kopurua AS 'Kopurua', k.totala AS 'Totala' FROM produktua b JOIN kontsumizioak k ON b.idProduktua=k.idProduktua WHERE k.IdFaktura = @fraZkia";
+            MySqlCommand cmd = new MySqlCommand(select, db.conn);
+            cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
+            return new MySqlDataAdapter(cmd);
+        }
+        public MySqlDataReader FakturaBilatu(int idBazkidea, DateTime data){
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
+            MySqlCommand cmd = new MySqlCommand(select, db.conn);
+            cmd.Parameters.AddWithValue("@idBazkidea", idBazkidea);
+            cmd.Parameters.AddWithValue("@data", data);
+
+            return cmd.ExecuteReader();
+        }
     }
 }

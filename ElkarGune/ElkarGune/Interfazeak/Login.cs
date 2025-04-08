@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ElkarGune.Kontrolak;
 
 namespace ElkarGune
 {
@@ -27,8 +28,7 @@ namespace ElkarGune
 
         public void login()
         {
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
+            
             string erabiltzailea = txt_Erabiltzailea.Text.Trim();
             string pasahitza = txt_Pasahitza.Text.Trim();
 
@@ -40,14 +40,9 @@ namespace ElkarGune
 
             try
             {
-                string query = "SELECT * FROM bazkidea WHERE erabiltzailea=@erabiltzailea AND pasahitza=@pasahitza";
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = db.conn;
-                cmd.CommandText = query;
-                cmd.Parameters.AddWithValue("@erabiltzailea", erabiltzailea);
-                cmd.Parameters.AddWithValue("@pasahitza", pasahitza);
-
-                using (MySqlDataReader dr = cmd.ExecuteReader())
+                Logina log = new Logina();
+                
+                using (MySqlDataReader dr = log.LoginaEgin(erabiltzailea, pasahitza))
                 {
                     if (dr.Read())
                     {
@@ -82,7 +77,7 @@ namespace ElkarGune
             }
             finally
             {
-                db.conn.Close();
+                
             }
         }
 

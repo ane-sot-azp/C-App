@@ -50,7 +50,38 @@ namespace ElkarGune
             Erreserba erreserba = new Erreserba();
             return erreserba.HistorikoaIkusi(idBazkidea, data);
         }
-
+        public void Erreserbatu(int idBazkidea, int mota, DateTime erreserbaData){
+            Erreserba erreserba = new Erreserba();
+            erreserba.Erreserbatu(idBazkidea, mota, erreserbaData);
+        }
+        public bool Ezabatu(int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            Erreserba erreserba = new Erreserba();
+            return erreserba.Ezabatu(idBazkidea, mota, erreserbaData);
+        }
+        public bool EspazioaErreserbatutaDago(int idEspazioa, int mota, DateTime erreserbaData){
+            Espazioa espazioa = new Espazioa();
+            return espazioa.EspazioaErreserbatutaDago(idEspazioa, mota, erreserbaData);
+        }
+        public void ErreserbaKudeatu(int idEspazioa, int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            Erreserba erreserba = new Erreserba();
+            erreserba.ErreserbaKudeatu(idEspazioa, idBazkidea, mota, erreserbaData);
+        }
+        public List<(int index, int egoera)> LortuEspazioEgoerak(){
+        Espazioa espazioa = new Espazioa();
+        return espazioa.LortuEspazioEgoerak();
+        }
+        public List<(int espazioaId, int idBazkidea)> LortuErreserbak(int mota, DateTime data)
+        {
+        Espazioa espazioa = new Espazioa();
+        return espazioa.LortuErreserbak(mota, data);
+        }
+        public int ErreserbaIdLortu(int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            Erreserba erreserba = new Erreserba();
+            return erreserba.ErreserbaIdLortu(idBazkidea, mota, erreserbaData);
+        }
     }
 }
 

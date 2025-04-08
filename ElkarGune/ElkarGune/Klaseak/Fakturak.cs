@@ -161,5 +161,16 @@ namespace ElkarGune.Klaseak
 
             }
         }
+        public MySqlDataReader FakturaDetailea(int fraZkia)
+        {
+            DBKonexioa db = new DBKonexioa();
+                    db.konektatu();
+
+                    string query = "SELECT totala, idProduktua, kopurua FROM kontsumizioak WHERE IdFaktura=@fraZkia";
+                    MySqlCommand cmd = new MySqlCommand(query, db.conn);
+                    cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
+            
+            return cmd.ExecuteReader();
+        }
     }
 }

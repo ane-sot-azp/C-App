@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ElkarGune.Interfazeak;
 
 namespace ElkarGune.Klaseak
 {
@@ -85,6 +86,187 @@ namespace ElkarGune.Klaseak
             da.Fill(dt);
             db.conn.Close();
             return dt;
+        }
+        public void Erreserbatu(int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            KontrolErreserbak ke = new KontrolErreserbak();
+
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            // Verificar si ya existe una reserva para esta mesa
+            string checkQuery = "SELECT COUNT(*) FROM erreserba WHERE idBazkidea = @idBazk AND mota = @mota AND data = @data";
+
+            MySqlCommand checkCmd = new MySqlCommand(checkQuery, db.conn);
+            checkCmd.Parameters.AddWithValue("@idBazk", idBazkidea);
+            checkCmd.Parameters.AddWithValue("@mota", mota);
+            checkCmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
+
+            int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+            if (exists > 0)
+            {
+                int idErreserba = ErreserbaIdLortu(idBazkidea, mota, erreserbaData);
+
+                ke.ErreserbaEguneratu(idErreserba);
+            }
+        }
+        public int ErreserbaIdLortu(int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string query = "SELECT idErreserba FROM erreserba WHERE idBazkidea = @idBazk AND mota = @mota AND data = @data";
+
+            MySqlCommand cmd = new MySqlCommand(query, db.conn);
+            cmd.Parameters.AddWithValue("@idBazk", idBazkidea);
+            cmd.Parameters.AddWithValue("@mota", mota);
+            cmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
+
+            object result = cmd.ExecuteScalar();
+
+            if (result != null)
+            {
+                db.conn.Close();
+                return Convert.ToInt32(result);
+            }
+            KontrolErreserbak ke = new KontrolErreserbak();
+            return ke.ErreserbaSartu(idBazkidea, mota, erreserbaData);
+
+        }
+        public bool Ezabatu(int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+           string checkQuery = "SELECT COUNT(*) FROM erreserba WHERE idBazkidea = @idBazk AND mota = @mota AND data = @data";
+
+            MySqlCommand checkCmd = new MySqlCommand(checkQuery, db.conn);
+            checkCmd.Parameters.AddWithValue("@idBazk", idBazkidea);
+            checkCmd.Parameters.AddWithValue("@mota", mota);
+            checkCmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
+
+            int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+            if (exists > 0)
+            {
+                return true;                
+            }else{
+                return false;
+            }
+        }
+        public void ErreserbaKudeatu(int idEspazioa, int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string select1 = "SELECT COUNT(*) FROM espazioa WHERE idEspazioa=@idEspazioa AND egoera=1";
+            MySqlCommand selectCmd = new MySqlCommand(select1, db.conn);
+            selectCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+
+            int egoera = Convert.ToInt32(selectCmd.ExecuteScalar());
+            KontrolErreserbak ke = new KontrolErreserbak();
+            if (egoera > 0)
+            {
+                if (ErreserbaDagoeneko(idEspazioa, idBazkidea, mota, erreserbaData)) // Comprobar si la reserva ya existe
+                {
+                    ke.ErreEleEzabatu(idEspazioa, idBazkidea, mota, erreserbaData);
+                     // Eliminar reserva existente
+                }
+                else
+                {
+                    if (ke.EspazioaErreserbatutaDago(idEspazioa, mota, erreserbaData)) // Verificar si otro usuario lo reservó
+                    {
+                        ErreserbaKudeaketa ek = new ErreserbaKudeaketa();
+                        ek.EspazioKoloreak();
+
+                    }
+                    else
+                    {
+                        ke.ErreEleSartu(idEspazioa, idBazkidea, mota, erreserbaData); // Insertar nueva reserva
+                    }
+                }
+            }
+            else
+            {
+                ErreserbaKudeaketa ek = new ErreserbaKudeaketa();
+                ek.MezuaEspazioa();
+            }
+            db.conn.Close();
+            ErreserbaKudeaketa ek1 = new ErreserbaKudeaketa();
+            ek1.ErreEleIkusi();
+        }
+        public List<(int index, int egoera)> LortuEspazioEgoerak()
+        {
+        List<(int index, int egoera)> egoerak = new List<(int, int)>();
+        DBKonexioa db = new DBKonexioa();
+        db.konektatu();
+        
+        string select = "SELECT egoera FROM espazioa";
+        using (MySqlCommand cmd = new MySqlCommand(select, db.conn))
+        using (MySqlDataReader reader = cmd.ExecuteReader())
+        {
+            int i = 1;
+            while (reader.Read() && i <= 21)
+            {
+                int egoera = Convert.ToInt32(reader["egoera"]);
+                egoerak.Add((i, egoera));
+                i++;
+            }
+        }
+
+        db.conn.Close();
+        return egoerak;
+        }
+        public List<(int espazioaId, int idBazkidea)> LortuErreserbak(string mota, DateTime data)
+        {
+        List<(int espazioaId, int idBazkidea)> erreserbak = new List<(int, int)>();
+        DBKonexioa db = new DBKonexioa();
+        db.konektatu();
+
+        string select = "SELECT e.idEspazioa, er.idBazkidea " +
+                        "FROM espazioa e " +
+                        "JOIN erreserbaelementua ee ON e.idEspazioa = ee.idEspazioa " +
+                        "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
+                        "WHERE er.mota = @mota AND er.data = @data";
+
+        MySqlCommand cmd = new MySqlCommand(select, db.conn);
+        cmd.Parameters.AddWithValue("@mota", mota);
+        cmd.Parameters.AddWithValue("@data", data.ToString("yyyy-MM-dd"));
+
+        MySqlDataReader reader = cmd.ExecuteReader();
+
+        while (reader.Read())
+        {
+            if (reader["idEspazioa"] != DBNull.Value)
+            {
+                int espazioaId = Convert.ToInt32(reader["idEspazioa"]);
+                int idBazkidea = Convert.ToInt32(reader["idBazkidea"]);
+                erreserbak.Add((espazioaId, idBazkidea));
+            }
+        }
+
+        db.conn.Close();
+        return erreserbak;
+        }
+        public bool ErreserbaDagoeneko(int idEspazioa, int idBazkidea, int mota, DateTime erreserbaData)
+        {
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string checkQuery = "SELECT COUNT(*) FROM erreserbaelementua ee " +
+                                "JOIN erreserba er ON ee.idErreserba = er.idErreserba " +
+                                "WHERE ee.idEspazioa = @idEspazioa AND er.idBazkidea = @idBazk " +
+                                "AND er.mota = @mota AND er.data = @data";
+
+            using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, db.conn))
+            {
+                checkCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
+                checkCmd.Parameters.AddWithValue("@idBazk", idBazkidea);
+                checkCmd.Parameters.AddWithValue("@mota", mota);
+                checkCmd.Parameters.AddWithValue("@data", erreserbaData.ToString("yyyy-MM-dd"));
+
+                return Convert.ToInt32(checkCmd.ExecuteScalar()) > 0;
+            }
         }
     }
 }

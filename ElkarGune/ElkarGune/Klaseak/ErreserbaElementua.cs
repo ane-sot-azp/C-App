@@ -52,8 +52,8 @@ namespace ElkarGune.Klaseak
 
             using (MySqlCommand insertCmd = new MySqlCommand(insertQuery, db.conn))
             {
-                ErreserbaKudeaketa ek = new ErreserbaKudeaketa();
-                insertCmd.Parameters.AddWithValue("@idErreserba", ek.ErreserbaIdLortu(idBazkidea, mota, erreserbaData));
+                KontrolErreserbak ke = new KontrolErreserbak();
+                insertCmd.Parameters.AddWithValue("@idErreserba", ke.ErreserbaIdLortu(idBazkidea, mota, erreserbaData));
                 insertCmd.Parameters.AddWithValue("@idEspazioa", idEspazioa);
 
                 insertCmd.ExecuteNonQuery();

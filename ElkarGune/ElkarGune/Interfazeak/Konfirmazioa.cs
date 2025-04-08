@@ -27,14 +27,9 @@ namespace ElkarGune.Interfazeak
             float totala = 0;
             label1.Text=idBazkidea.ToString();
             DateTime data = DateTime.Today;
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
-
-            string select = "SELECT k.idProduktua, b.izena AS 'Produktua', k.prezioa AS 'Prezioa', k.kopurua AS 'Kopurua', k.totala AS 'Totala' FROM produktua b JOIN kontsumizioak k ON b.idProduktua=k.idProduktua WHERE k.IdFaktura = @fraZkia";
-            MySqlCommand cmd = new MySqlCommand(select, db.conn);
-            cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            
+            KontrolProduktuak kk = new KontrolProduktuak();
+            MySqlDataAdapter da = kk.KontsumizioZerrenda(fraZkia);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -56,19 +51,12 @@ namespace ElkarGune.Interfazeak
 
             dataGridView1.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(dataGridView1_DataBindingComplete);
 
-            db.conn.Close();
         }
         private void KargatuDatuak()
         {
             float totala = 0;
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
-
-            string select = "SELECT k.idProduktua, b.izena AS 'Produktua', k.prezioa AS 'Prezioa', k.kopurua AS 'Kopurua', k.totala AS 'Totala' FROM produktua b JOIN kontsumizioak k ON b.idProduktua=k.idProduktua WHERE k.IdFaktura = @fraZkia";
-            MySqlCommand cmd = new MySqlCommand(select, db.conn);
-            cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
-
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            KontrolProduktuak kk = new KontrolProduktuak();
+            MySqlDataAdapter da = kk.KontsumizioZerrenda(fraZkia);
             DataTable dt = new DataTable();
             da.Fill(dt);
 
@@ -83,7 +71,6 @@ namespace ElkarGune.Interfazeak
             lbl_Totala.Text = totala.ToString("F2") + " €";
             dataGridView1.DataSource = dt;
 
-            db.conn.Close();
         }
 
 
@@ -110,21 +97,13 @@ namespace ElkarGune.Interfazeak
                 try
                 {
                     DateTime data = DateTime.Today;
-                    DBKonexioa db2 = new DBKonexioa();
-                    db2.konektatu();
-
-                    string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
-                    MySqlCommand cmd2 = new MySqlCommand(select, db2.conn);
-                    cmd2.Parameters.AddWithValue("@idBazkidea", idBazkidea);
-                    cmd2.Parameters.AddWithValue("@data", data);
-
-                    MySqlDataReader dr2 = cmd2.ExecuteReader();
+                    KontrolProduktuak kk = new KontrolProduktuak();
+                    MySqlDataReader dr2 = kk.FakturaBilatu(idBazkidea, data);
                     if (dr2.Read())
                     {
                         fraZkia = Convert.ToInt32(dr2["idFaktura"]);
                     }
                     dr2.Close();
-                    db2.conn.Close(); // Cerramos conexión manualmente
                 }
                 catch (Exception ex)
                 {
@@ -134,24 +113,17 @@ namespace ElkarGune.Interfazeak
 
                 try
                 {
-                    DBKonexioa db = new DBKonexioa();
-                    db.konektatu();
-
-                    string query = "SELECT totala, idProduktua, kopurua FROM kontsumizioak WHERE IdFaktura=@fraZkia";
-                    MySqlCommand cmd = new MySqlCommand(query, db.conn);
-                    cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
-
-                    MySqlDataReader dr = cmd.ExecuteReader();
+                    KontrolProduktuak kk1 = new KontrolProduktuak();
+                    MySqlDataReader dr = kk1.FakturaDetailea(fraZkia);
                     while (dr.Read())
                     {
                         totala += Convert.ToSingle(dr["totala"]);
                         int idProd = Convert.ToInt32(dr["idProduktua"]);
                         int kop = Convert.ToInt32(dr["kopurua"]);
-                        KontrolProduktuak kk = new KontrolProduktuak();
-                        kk.EguneratuProduktua(idProd, kop);
+                        KontrolProduktuak kk2 = new KontrolProduktuak();
+                        kk2.EguneratuProduktua(idProd, kop);
                     }
                     dr.Close();
-                    db.conn.Close(); // Cerramos conexión manualmente
                 }
                 catch (Exception ex)
                 {
@@ -225,7 +197,6 @@ namespace ElkarGune.Interfazeak
                 int idProduktua = Convert.ToInt32(fila.Cells[0].Value?.ToString());
                 // Obtener el valor de una celda por nombre de columna
                 //string idProduktua = fila.Cells["Produktua"].Value?.ToString(); // Cambia "NombreColumna" por el nombre real
-
 
                 KontrolProduktuak kk = new KontrolProduktuak();
                 kk.EzabatuKontsumizioa(idProduktua, fraZkia);
