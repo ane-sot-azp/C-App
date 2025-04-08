@@ -70,8 +70,8 @@ namespace ElkarGune
         private void lbl_Kontsumizioak_Click(object sender, EventArgs e)
         {
             int idBazkidea = Convert.ToInt32(lbl_idBaz.Text);
-            KontrolProduktuak kk = new KontrolProduktuak();
-            kk.SartuFaktura(idBazkidea);
+            KontrolAdmin ka = new KontrolAdmin();
+            ka.SartuFaktura(idBazkidea);
             this.Close();
 
 

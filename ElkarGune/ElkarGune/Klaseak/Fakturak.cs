@@ -36,7 +36,7 @@ namespace ElkarGune.Klaseak
             DateTime data = DateTime.Today;
             int fraZkia = 0;
 
-            if (!FakturaBilatu(idBazkidea, data)) // Faktura existitzen ez bada bakarrik sortu
+            if (!FakturaBilatu1(idBazkidea, data)) // Faktura existitzen ez bada bakarrik sortu
             {
                 using (DBKonexioa db = new DBKonexioa())
                 {
@@ -170,6 +170,18 @@ namespace ElkarGune.Klaseak
                     MySqlCommand cmd = new MySqlCommand(query, db.conn);
                     cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
             
+            return cmd.ExecuteReader();
+        }
+        public MySqlDataReader FakturaBilatu(int idBazkidea, DateTime data)
+        {
+            DBKonexioa db = new DBKonexioa();
+            db.konektatu();
+
+            string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
+            MySqlCommand cmd = new MySqlCommand(select, db.conn);
+            cmd.Parameters.AddWithValue("@idBazkidea", idBazkidea);
+            cmd.Parameters.AddWithValue("@data", data);
+
             return cmd.ExecuteReader();
         }
     }

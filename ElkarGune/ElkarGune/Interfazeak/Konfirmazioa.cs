@@ -97,8 +97,8 @@ namespace ElkarGune.Interfazeak
                 try
                 {
                     DateTime data = DateTime.Today;
-                    KontrolProduktuak kk = new KontrolProduktuak();
-                    MySqlDataReader dr2 = kk.FakturaBilatu(idBazkidea, data);
+                    KontrolAdmin ka = new KontrolAdmin();
+                    MySqlDataReader dr2 = ka.FakturaBilatu(idBazkidea, data);
                     if (dr2.Read())
                     {
                         fraZkia = Convert.ToInt32(dr2["idFaktura"]);
@@ -113,8 +113,8 @@ namespace ElkarGune.Interfazeak
 
                 try
                 {
-                    KontrolProduktuak kk1 = new KontrolProduktuak();
-                    MySqlDataReader dr = kk1.FakturaDetailea(fraZkia);
+                    KontrolAdmin ka = new KontrolAdmin();
+                    MySqlDataReader dr = ka.FakturaDetailea(fraZkia);
                     while (dr.Read())
                     {
                         totala += Convert.ToSingle(dr["totala"]);
@@ -133,8 +133,8 @@ namespace ElkarGune.Interfazeak
 
                 if (fraZkia > 0)
                 {
-                    KontrolProduktuak kk = new KontrolProduktuak();
-                    kk.EguneratuFaktura(fraZkia, totala);
+                    KontrolAdmin ka = new KontrolAdmin();
+                    ka.EguneratuFaktura(fraZkia, totala);
                 }
                 else
                 {

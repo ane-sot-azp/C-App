@@ -148,16 +148,6 @@ namespace ElkarGune.Klaseak
             cmd.Parameters.AddWithValue("@fraZkia", fraZkia);
             return new MySqlDataAdapter(cmd);
         }
-        public MySqlDataReader FakturaBilatu(int idBazkidea, DateTime data){
-            DBKonexioa db = new DBKonexioa();
-            db.konektatu();
-
-            string select = "SELECT idFaktura FROM fakturak WHERE idBazkidea=@idBazkidea AND data=@data AND totala is null";
-            MySqlCommand cmd = new MySqlCommand(select, db.conn);
-            cmd.Parameters.AddWithValue("@idBazkidea", idBazkidea);
-            cmd.Parameters.AddWithValue("@data", data);
-
-            return cmd.ExecuteReader();
-        }
+        
     }
 }

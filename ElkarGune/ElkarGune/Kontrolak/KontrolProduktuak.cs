@@ -22,17 +22,7 @@ namespace ElkarGune
         {
             Kontsumizioak kontsumizioak = new Kontsumizioak();
             kontsumizioak.SartuKontsumizioa(idProd, kop, fraZkia, prezioa);
-        }
-        public void SartuFaktura(int idBazkidea)
-        {
-            Fakturak fakturak = new Fakturak();
-            fakturak.SartuFaktura(idBazkidea);
-        }
-        public void EguneratuFaktura(int fraZenbakia, float total)
-        {
-            Fakturak fakturak = new Fakturak();
-            fakturak.EguneratuFaktura(fraZenbakia, total);
-        }
+        }        
         public void EguneratuProduktua(int idProduktua, int kopurua)
         {
             Produktua produktua = new Produktua();
@@ -64,13 +54,6 @@ namespace ElkarGune
             Kontsumizioak k = new Kontsumizioak();
             return k.KargatuDatuak(fraZenbakia);
         }
-        public MySqlDataReader FakturaBilatu(int idBazkidea, DateTime data){
-            Kontsumizioak k = new Kontsumizioak();
-            return k.FakturaBilatu(idBazkidea, data);
-        }
-        public MySqlDataReader FakturaDetailea(int idFaktura){
-            Fakturak f = new Fakturak();
-            return f.FakturaDetailea(idFaktura);
-        }
+        
     }
 }
